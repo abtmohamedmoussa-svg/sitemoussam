@@ -49,7 +49,8 @@ def send_email(subject, body, recipient):
         
         msg.attach(MIMEText(body, 'html'))
         
-        server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+        server = smtplib.SMTP('smtp-mail.outlook.com', 587)
+        server.starttls()
         server.login(sender_email, sender_password)
         server.send_message(msg)
         server.quit()
