@@ -11,6 +11,14 @@ SITES = {
     "BCT": "https://www.bct.gov.tn/",
     "CMF": "https://www.cmf.org.tn/",
     "BVMT": "https://www.bvmt.com.tn/",
+    "BVMT2": "https://tunis-stockexchange.com/",
+    "ilboursa" : "https://www.ilboursa.com/",
+    "WMC" : "https://www.ilboursa.com/",
+    "African Manager" : "https://www.ilboursa.com/",
+    "Economiste Maghrebin" : "https://www.ilboursa.com/",
+    "Business news" : "https://www.ilboursa.com/",
+    "Managers" : "https://managers.tn/",
+    "TAP": "https://www.tap.info.tn/fr",    
     "INS": "https://www.ins.tn/"
 }
 
