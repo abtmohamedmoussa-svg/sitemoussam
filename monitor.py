@@ -1,99 +1,97 @@
 import requests
 from bs4 import BeautifulSoup
 import json
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-from datetime import datetime
 import os
+from datetime import datetime
 
-# Configuration des sites à monitorer
+NTFY_TOPIC = "moussa-news-1313"
+STATE_FILE = "state.json"
+
 SITES = {
     "BCT": "https://www.bct.gov.tn/",
     "CMF": "https://www.cmf.org.tn/",
-    "TSE": "https://www.bvmt.com.tn/",
+    "BVMT": "https://www.bvmt.com.tn/",
     "INS": "https://www.ins.tn/"
 }
 
-# Fonction pour extraire le contenu d'un site
 def get_site_content(url):
     try:
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-        }
-        response = requests.get(url, timeout=10, headers=headers)
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
+        response = requests.get(url, timeout=15, headers=headers)
         response.encoding = 'utf-8'
         soup = BeautifulSoup(response.content, 'html.parser')
-        
-        # Extrait les titres (nouvelles publications)
         articles = []
         for tag in soup.find_all(['h1', 'h2', 'h3', 'a']):
             text = tag.get_text(strip=True)
-            if len(text) > 10:
-                articles.append(text[:100])
-        
-        return articles[:10]  # Top 10 articles
+            if len(text) > 15 and text not in articles:
+                articles.append(text[:150])
+        return articles[:30]
     except Exception as e:
-        return [f"Erreur: {str(e)}"]
+        print(f"Erreur sur {url}: {e}")
+        return []
 
-# Fonction pour envoyer un email
-def send_email(subject, body, recipient):
+def send_notification(site_name, url, new_items):
+    message = "\n".join(f"- {item}" for item in new_items[:5])
+    message += f"\n\n{url}"
     try:
-        sender_email = os.getenv("EMAIL_USER")
-        sender_password = os.getenv("EMAIL_PASSWORD")
-        
-        msg = MIMEMultipart()
-        msg['From'] = sender_email
-        msg['To'] = recipient
-        msg['Subject'] = subject
-        
-        msg.attach(MIMEText(body, 'html'))
-        
-        server = smtplib.SMTP('smtp-mail.outlook.com', 587)
-        server.starttls()
-        server.login(sender_email, sender_password)
-        server.send_message(msg)
-        server.quit()
-        
-        print(f"✓ Email envoyé à {recipient}")
-        return True
+        requests.post(
+            f"https://ntfy.sh/{NTFY_TOPIC}",
+            data=message.encode('utf-8'),
+            headers={
+                "Title": f"{site_name} : nouvelle publication",
+                "Priority": "default",
+                "Tags": "newspaper"
+            },
+            timeout=10
+        )
+        print(f"   Notification envoyee pour {site_name}")
     except Exception as e:
-        print(f"✗ Erreur email: {str(e)}")
-        return False
+        print(f"   Erreur notification: {e}")
 
-# Fonction principale
+def load_state():
+    if os.path.exists(STATE_FILE):
+        with open(STATE_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {}
+
+def save_state(state):
+    with open(STATE_FILE, "w", encoding="utf-8") as f:
+        json.dump(state, f, ensure_ascii=False, indent=2)
+
 def monitor():
-    print(f"[{datetime.now()}] Vérification des sites...")
-    
-    results = {}
-    new_content = False
-    email_body = "<h2>📰 Rapport de Monitoring - " + datetime.now().strftime("%d/%m/%Y %H:%M") + "</h2><br>"
-    
+    print(f"[{datetime.now()}] Verification des sites...")
+    state = load_state()
+    first_run = not state
+
     for site_name, url in SITES.items():
-        print(f"\n→ Vérification {site_name}...")
-        content = get_site_content(url)
-        results[site_name] = content
-        
-        if content and content[0] != "Erreur":
-            new_content = True
-            email_body += f"<h3>🔵 {site_name}</h3>"
-            email_body += f"<p><strong>URL:</strong> <a href='{url}'>{url}</a></p>"
-            email_body += "<ul>"
-            for item in content[:5]:
-                email_body += f"<li>{item}</li>"
-            email_body += "</ul><br>"
-            print(f"   ✓ {len(content)} éléments trouvés")
+        print(f"-> Verification {site_name}...")
+        current = get_site_content(url)
+        if not current:
+            continue
+        previous = set(state.get(site_name, []))
+        new_items = [item for item in current if item not in previous]
+
+        if new_items and not first_run:
+            print(f"   {len(new_items)} nouveaute(s) detectee(s)")
+            send_notification(site_name, url, new_items)
+        elif first_run:
+            print(f"   Premiere execution : {len(current)} elements memorises")
         else:
-            email_body += f"<h3>❌ {site_name}</h3><p>Impossible d'accéder au site</p><br>"
-    
-    # Envoyer email si nouveau contenu
-    if new_content:
-        recipient = os.getenv("EMAIL_RECIPIENT")
-        send_email("🔔 Nouvelle Publication Détectée", email_body, recipient)
-    else:
-        print("\n✓ Pas de nouveau contenu détecté")
-    
-    return results
+            print("   Rien de nouveau")
+
+        state[site_name] = current
+
+    save_state(state)
+    if first_run:
+        try:
+            requests.post(
+                f"https://ntfy.sh/{NTFY_TOPIC}",
+                data="Le monitoring BCT / CMF / BVMT / INS est actif. Tu recevras une notification a chaque nouvelle publication.".encode('utf-8'),
+                headers={"Title": "Monitoring active", "Tags": "white_check_mark"},
+                timeout=10
+            )
+        except Exception:
+            pass
 
 if __name__ == "__main__":
     monitor()
