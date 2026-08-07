@@ -150,6 +150,8 @@ def monitor():
             print(f"   Baseline: {len(articles)} articles memorises")
         else:
             new = {h: t for h, t in articles.items() if h not in known}
+            if "Tunisie" in site:
+                new = {h: t for h, t in new.items() if "tunis" in t.lower()}
             print(f"   {len(new)} nouveau(x) article(s)")
             for i, (href, title) in enumerate(new.items()):
                 if i >= MAX_NOTIF_PER_SITE:
