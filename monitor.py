@@ -22,7 +22,7 @@ SITES = {
     "Kapitalis" : "https://kapitalis.com/tunisie/",
     "Tustex" : "https://www.tustex.com/",
     "Magazine Entreprise" : "https://www.entreprises-magazine.com",
-    "Lapresse" : https://www.lapresse.tn/",
+    "Lapresse" : "https://www.lapresse.tn/",
     "Managers": "https://managers.tn/",
     "TAP": "https://www.tap.info.tn/fr",
     "INS": "https://www.ins.tn/"
