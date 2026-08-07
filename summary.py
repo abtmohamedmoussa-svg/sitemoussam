@@ -78,7 +78,8 @@ def probe_bct():
     except Exception as e:
         print(f"BCT erreur: {e}")
 
-def main(): probe_bct()
+def main():
+    probe_bct()
     lines = ["== BOURSE DE TUNIS =="]
     for name, url in BVMT_ASSETS:
         lines.append(get_irbe7(name, url))
