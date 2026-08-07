@@ -25,6 +25,9 @@ SITES = {
     "Lapresse" : "https://www.lapresse.tn/",
     "Managers": "https://managers.tn/",
     "TAP": "https://www.tap.info.tn/fr",
+    "BCT2": "https://news.google.com/rss/search?q=site:bct.gov.tn&hl=fr&gl=TN&ceid=TN:fr",
+    "ilboursa2": "https://news.google.com/rss/search?q=site:ilboursa.com&hl=fr&gl=TN&ceid=TN:fr",
+    "African Manager2": "https://news.google.com/rss/search?q=site:africanmanager.com&hl=fr&gl=TN&ceid=TN:fr",
     "INS": "https://www.ins.tn/"
 }
 
@@ -65,6 +68,25 @@ def get_articles(url):
     except Exception as e:
         print(f"   Erreur acces: {e}")
         return {}
+def get_articles_rss(url):
+    """Lit un flux RSS (Google News) et retourne {lien: titre}."""
+    import xml.etree.ElementTree as ET
+    try:
+        r = fetch(url)
+        print(f"   HTTP {r.status_code} (RSS)")
+        if r.status_code != 200:
+            return {}
+        root = ET.fromstring(r.content)
+        articles = {}
+        for item in root.iter('item'):
+            title = (item.findtext('title') or '').strip()
+            link = (item.findtext('link') or '').strip()
+            if title and link:
+                articles[link] = title[:200]
+        return dict(list(articles.items())[:60])
+    except Exception as e:
+        print(f"   Erreur RSS: {e}")
+        return {}
 
 def notify(site, title, link):
     try:
@@ -99,7 +121,10 @@ def monitor():
     for site, url in SITES.items():
         key = site + "|urls"
         print(f"-> {site}")
-        articles = get_articles(url)
+        if "news.google.com" in url:
+            articles = get_articles_rss(url)
+        else:
+            articles = get_articles(url)
         if not articles:
             print("   Site inaccessible ou aucun article trouve")
             continue
