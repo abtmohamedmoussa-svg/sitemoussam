@@ -37,7 +37,7 @@ SITES = {
     "Financial Afrik Tunisie": "https://news.google.com/rss/search?q=site:financialafrik.com+Tunisie&hl=fr&gl=TN&ceid=TN:fr",
     "BAD Tunisie": "https://news.google.com/rss/search?q=site:afdb.org+Tunisia+OR+Tunisie&hl=fr&gl=TN&ceid=TN:fr",
     "Jeune Afrique Tunisie": "https://news.google.com/rss/search?q=site:jeuneafrique.com+Tunisie&hl=fr&gl=TN&ceid=TN:fr",
-    "La Tribune Afrique Tunisie": "https://news.google.com/rss/search?q=site:afrique.latribune.fr+Tunisie&hl=fr&gl=TN&ceid=TN:fr",
+   "La Tribune Afrique Tunisie": "https://news.google.com/rss/search?q=site:latribune.fr+Tunisie&hl=fr&gl=TN&ceid=TN:fr",
     "FT Tunisie": "https://news.google.com/rss/search?q=site:ft.com+Tunisia&hl=en&gl=US&ceid=US:en",
     "Le Monde Tunisie": "https://news.google.com/rss/search?q=site:lemonde.fr+Tunisie&hl=fr&gl=TN&ceid=TN:fr",
     "RFI Tunisie": "https://news.google.com/rss/search?q=site:rfi.fr+Tunisie&hl=fr&gl=TN&ceid=TN:fr",
