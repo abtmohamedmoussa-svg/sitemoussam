@@ -28,12 +28,28 @@ SITES = {
     "INS": "https://www.ins.tn/"
 }
 
-HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
+HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'Accept-Language': 'fr-FR,fr;q=0.9,en;q=0.8'
+}
+
+def fetch(url):
+    """Recupere la page, avec repli si certificat SSL invalide."""
+    try:
+        return requests.get(url, timeout=25, headers=HEADERS)
+    except requests.exceptions.SSLError:
+        import urllib3
+        urllib3.disable_warnings()
+        return requests.get(url, timeout=25, headers=HEADERS, verify=False)
 
 def get_articles(url):
     """Retourne {lien: titre} des articles trouves sur la page."""
     try:
-        r = requests.get(url, timeout=20, headers=HEADERS)
+        r = fetch(url)
+        print(f"   HTTP {r.status_code}")
+        if r.status_code != 200:
+            return {}
         soup = BeautifulSoup(r.content, 'html.parser')
         base = urlparse(url).netloc.replace('www.', '')
         articles = {}
@@ -41,7 +57,6 @@ def get_articles(url):
             title = a.get_text(strip=True)
             href = urljoin(url, a['href']).split('#')[0]
             dom = urlparse(href).netloc.replace('www.', '')
-            # Garde uniquement les liens du meme site avec un vrai titre
             if dom != base or len(title) < 30:
                 continue
             if href not in articles:
