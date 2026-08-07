@@ -52,7 +52,9 @@ def get_indices_bvmt():
     lines = []
     try:
         r = requests.get("https://finansya.tn/palmares-indices", headers=HEADERS, timeout=20)
+        print(f"   finansya indices: HTTP {r.status_code}, taille {len(r.content)} octets")
         soup = BeautifulSoup(r.content, 'html.parser')
+        print(f"   extrait page: {soup.get_text(' ', strip=True)[:200]}")
         for tr in soup.find_all('tr'):
             cells = [td.get_text(strip=True) for td in tr.find_all('td')]
             if len(cells) >= 3 and cells[1] and cells[0] and "Aucun" not in cells[0]:
@@ -71,6 +73,7 @@ def get_action(name, url):
         if m:
             print(f"OK {name}")
             return f"{name} : {m.group(1)} TND ({m.group(2)}%)"
+        print(f"Echec extraction {name}: HTTP {r.status_code}, extrait: {text[:150]}")
     except Exception as e:
         print(f"Erreur {name}: {e}")
     return f"{name} : indisponible"
