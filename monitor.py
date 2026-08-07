@@ -10,12 +10,9 @@ STATE_FILE = "state.json"
 MAX_NOTIF_PER_SITE = 5
 
 SITES = {
-    "BCT": "https://www.bct.gov.tn/",
     "CMF": "https://www.cmf.tn/",
-    "BVMT2": "https://tunis-stockexchange.com/",
-    "ilboursa": "https://www.ilboursa.com/",
+    "BVMT": "https://tunis-stockexchange.com/",
     "WMC": "https://www.webmanagercenter.com/",
-    "African Manager": "https://africanmanager.com/",
     "Economiste Maghrebin": "https://www.leconomistemaghrebin.com/",
     "Business News": "https://www.businessnews.com.tn/",
     "Tunisie Numérique" : "https://www.tunisienumerique.com/",
@@ -25,9 +22,26 @@ SITES = {
     "Lapresse" : "https://www.lapresse.tn/",
     "Managers": "https://managers.tn/",
     "TAP": "https://www.tap.info.tn/fr",
-    "BCT2": "https://news.google.com/rss/search?q=site:bct.gov.tn&hl=fr&gl=TN&ceid=TN:fr",
-    "ilboursa2": "https://news.google.com/rss/search?q=site:ilboursa.com&hl=fr&gl=TN&ceid=TN:fr",
-    "African Manager2": "https://news.google.com/rss/search?q=site:africanmanager.com&hl=fr&gl=TN&ceid=TN:fr",
+    "BCT": "https://news.google.com/rss/search?q=site:bct.gov.tn&hl=fr&gl=TN&ceid=TN:fr",
+    "ilboursa": "https://news.google.com/rss/search?q=site:ilboursa.com&hl=fr&gl=TN&ceid=TN:fr",
+    "African Manager": "https://news.google.com/rss/search?q=site:africanmanager.com&hl=fr&gl=TN&ceid=TN:fr",
+     "Moodys Tunisie": "https://news.google.com/rss/search?q=Moody's+Tunisia+rating&hl=en&gl=US&ceid=US:en",
+    "SP Tunisie": "https://news.google.com/rss/search?q=%22S%26P+Global%22+Tunisia&hl=en&gl=US&ceid=US:en",
+    "Fitch Tunisie": "https://news.google.com/rss/search?q=Fitch+Ratings+Tunisia&hl=en&gl=US&ceid=US:en",
+    "FMI Tunisie": "https://news.google.com/rss/search?q=site:imf.org+Tunisia&hl=en&gl=US&ceid=US:en",
+    "Banque Mondiale Tunisie": "https://news.google.com/rss/search?q=site:banquemondiale.org+Tunisie&hl=fr&gl=TN&ceid=TN:fr",
+    "OCDE Tunisie": "https://news.google.com/rss/search?q=site:oecd.org+Tunisie+OR+Tunisia&hl=fr&gl=TN&ceid=TN:fr",
+    "Reuters Tunisie": "https://news.google.com/rss/search?q=site:reuters.com+Tunisia&hl=en&gl=US&ceid=US:en",
+    "Bloomberg Tunisie": "https://news.google.com/rss/search?q=site:bloomberg.com+Tunisia&hl=en&gl=US&ceid=US:en",
+    "Agence Ecofin Tunisie": "https://news.google.com/rss/search?q=site:agenceecofin.com+Tunisie&hl=fr&gl=TN&ceid=TN:fr",
+    "Financial Afrik Tunisie": "https://news.google.com/rss/search?q=site:financialafrik.com+Tunisie&hl=fr&gl=TN&ceid=TN:fr",
+    "BAD Tunisie": "https://news.google.com/rss/search?q=site:afdb.org+Tunisia+OR+Tunisie&hl=fr&gl=TN&ceid=TN:fr",
+    "Jeune Afrique Tunisie": "https://news.google.com/rss/search?q=site:jeuneafrique.com+Tunisie&hl=fr&gl=TN&ceid=TN:fr",
+    "La Tribune Afrique Tunisie": "https://news.google.com/rss/search?q=site:afrique.latribune.fr+Tunisie&hl=fr&gl=TN&ceid=TN:fr",
+    "FT Tunisie": "https://news.google.com/rss/search?q=site:ft.com+Tunisia&hl=en&gl=US&ceid=US:en",
+    "Le Monde Tunisie": "https://news.google.com/rss/search?q=site:lemonde.fr+Tunisie&hl=fr&gl=TN&ceid=TN:fr",
+    "RFI Tunisie": "https://news.google.com/rss/search?q=site:rfi.fr+Tunisie&hl=fr&gl=TN&ceid=TN:fr",
+    "sikafinances": "https://news.google.com/rss/search?q=site:sikafinance.com&hl=fr&gl=TN&ceid=TN:fr",
     "INS": "https://www.ins.tn/"
 }
 
