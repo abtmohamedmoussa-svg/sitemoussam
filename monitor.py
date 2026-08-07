@@ -23,6 +23,8 @@ SITES = {
     "Managers": "https://managers.tn/",
     "TAP": "https://www.tap.info.tn/fr",
     "BCT": "https://news.google.com/rss/search?q=site:bct.gov.tn&hl=fr&gl=TN&ceid=TN:fr",
+    "tunisievaleurs": "https://www.tunisievaleurs.com/",
+    "macsa": "https://www.macsa.com.tn/",
     "ilboursa": "https://news.google.com/rss/search?q=site:ilboursa.com&hl=fr&gl=TN&ceid=TN:fr",
     "African Manager": "https://news.google.com/rss/search?q=site:africanmanager.com&hl=fr&gl=TN&ceid=TN:fr",
      "Moodys Tunisie": "https://news.google.com/rss/search?q=Moody's+Tunisia+rating&hl=en&gl=US&ceid=US:en",
