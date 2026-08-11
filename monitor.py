@@ -84,9 +84,12 @@ def get_articles(url):
     except Exception as e:
         print(f"   Erreur acces: {e}")
         return {}
+        
 def get_articles_rss(url):
-    """Lit un flux RSS (Google News) et retourne {lien: titre}."""
+    """Lit un flux RSS (Google News), articles de moins de 7 jours uniquement."""
     import xml.etree.ElementTree as ET
+    from email.utils import parsedate_to_datetime
+    from datetime import datetime, timezone, timedelta
     try:
         r = fetch(url)
         print(f"   HTTP {r.status_code} (RSS)")
@@ -94,11 +97,23 @@ def get_articles_rss(url):
             return {}
         root = ET.fromstring(r.content)
         articles = {}
+        limite = datetime.now(timezone.utc) - timedelta(days=7)
+        ignores = 0
         for item in root.iter('item'):
             title = (item.findtext('title') or '').strip()
             link = (item.findtext('link') or '').strip()
+            pub = (item.findtext('pubDate') or '').strip()
+            if pub:
+                try:
+                    if parsedate_to_datetime(pub) < limite:
+                        ignores += 1
+                        continue
+                except Exception:
+                    pass
             if title and link:
                 articles[link] = title[:200]
+        if ignores:
+            print(f"   {ignores} article(s) ancien(s) ignore(s)")
         return dict(list(articles.items())[:60])
     except Exception as e:
         print(f"   Erreur RSS: {e}")
