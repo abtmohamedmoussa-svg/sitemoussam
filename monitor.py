@@ -189,6 +189,7 @@ def monitor():
                 if t not in uniques.values():
                     uniques[h] = t
             new = uniques
+            new = {h: t for h, t in new.items() if not any(x in t for x in EXCLUS)}
             print(f"   {len(new)} nouveau(x) article(s)")
             for i, (href, title) in enumerate(new.items()):
                 if i >= MAX_NOTIF_PER_SITE:
