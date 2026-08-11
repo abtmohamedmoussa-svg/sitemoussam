@@ -44,7 +44,8 @@ SITES = {
     "Le Monde Tunisie": "https://news.google.com/rss/search?q=site:lemonde.fr+Tunisie&hl=fr&gl=TN&ceid=TN:fr",
     "RFI Tunisie": "https://news.google.com/rss/search?q=site:rfi.fr+Tunisie&hl=fr&gl=TN&ceid=TN:fr",
     "sikafinances": "https://news.google.com/rss/search?q=site:sikafinance.com&hl=fr&gl=TN&ceid=TN:fr",
-    "INS": "https://www.ins.tn/"
+    "BCT Actualites": "https://www.bct.gov.tn/bct/siteprod/actualites.jsp",
+    "INS": "https://www.ins.tn/communique-de-presse",
     "BVMT Publications": "https://tunis-stockexchange.com/publications-societes",
     "BVMT Avis": "https://tunis-stockexchange.com/avis-decisions",
     "CMF Communiques societes": "https://www.cmf.tn/?q=informations-des-soci-t-s",
