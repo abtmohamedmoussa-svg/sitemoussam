@@ -12,6 +12,9 @@ BVMT_ASSETS = [
     ("Attijari Bank", "https://irbe7.com/actifs/TJARI/TN0001600154"),
     ("Amen Bank", "https://irbe7.com/actifs/AMEN%20BANK/TN0003400058"),
     ("BIAT", "https://irbe7.com/actifs/BIAT/TN0001800457"),
+    ("Poulina PGH", "https://irbe7.com/actifs/POULINA%20GP%20HOLDING/TN0005700018"),
+    ("SFBT", "https://irbe7.com/actifs/SFBT/TN0001100254"),
+    ("TPR", "https://irbe7.com/actifs/TPR/TN0007270010"),
 ]
 
 INSTRUMENTS = [
