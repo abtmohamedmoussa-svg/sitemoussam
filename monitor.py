@@ -45,6 +45,14 @@ SITES = {
     "RFI Tunisie": "https://news.google.com/rss/search?q=site:rfi.fr+Tunisie&hl=fr&gl=TN&ceid=TN:fr",
     "sikafinances": "https://news.google.com/rss/search?q=site:sikafinance.com&hl=fr&gl=TN&ceid=TN:fr",
     "INS": "https://www.ins.tn/"
+    "BVMT Publications": "https://tunis-stockexchange.com/publications-societes",
+    "BVMT Avis": "https://tunis-stockexchange.com/avis-decisions",
+    "CMF Communiques societes": "https://www.cmf.tn/?q=informations-des-soci-t-s",
+    "CMF Etats financiers": "https://www.cmf.tn/?q=consultation-des-tats-financier-des-soci-t-s-faisant-ape",
+    "CMF Indicateurs activite": "https://www.cmf.tn/?q=indicateurs-d-activit-",
+    "CMF Visas titres creance": "https://www.cmf.tn/?q=visas-accord-s-par-le-cmf",
+    "CMF Visas capital": "https://www.cmf.tn/?q=visas-capital",
+    "CMF Avis": "https://www.cmf.tn/?q=avis-et-d-cisions-du-cmf",
 }
 
 HEADERS = {
@@ -71,16 +79,21 @@ def get_articles(url):
             return {}
         soup = BeautifulSoup(r.content, 'html.parser')
         base = urlparse(url).netloc.replace('www.', '')
+        min_len = 12 if "cmf.tn" in base else 30
         articles = {}
         for a in soup.find_all('a', href=True):
             title = a.get_text(strip=True)
             href = urljoin(url, a['href']).split('#')[0]
             dom = urlparse(href).netloc.replace('www.', '')
-            if dom != base or len(title) < 30:
+            if dom != base:
+                continue
+            if not title and href.lower().endswith('.pdf'):
+                title = href.rsplit('/', 1)[-1].replace('_', ' ').replace('.pdf', '')
+            if len(title) < min_len:
                 continue
             if href not in articles:
                 articles[href] = title[:200]
-        return dict(list(articles.items())[:60])
+        return dict(list(articles.items())[:80])
     except Exception as e:
         print(f"   Erreur acces: {e}")
         return {}
