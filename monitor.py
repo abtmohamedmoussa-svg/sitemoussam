@@ -55,6 +55,7 @@ SITES = {
     "CMF Visas capital": "https://www.cmf.tn/?q=visas-capital",
     "CMF Avis": "https://www.cmf.tn/?q=avis-et-d-cisions-du-cmf",
 }
+EXCLUS = ["Information économique et financière", "Bloomberg LEI"]
 
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36',
