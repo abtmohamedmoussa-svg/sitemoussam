@@ -61,7 +61,7 @@ import unicodedata
 
 # ---- FILTRAGE SPORT / GUERRE -------------------------------------------
 # False = mode observation : on journalise sans filtrer.
-FILTRAGE_ACTIF = False
+FILTRAGE_ACTIF = TRUE
 
 SITES_EXEMPTES = {
     "CMF", "BVMT", "BCT", "BCT Actualites", "INS",
@@ -104,7 +104,12 @@ SPORT = [
     "esperance sportive", "esperance de tunis", "club africain",
     "etoile du sahel", "stade tunisien", "us monastir", "cs sfaxien",
     "ca bizertin", "joueur", "joueurs", "match", "matchs", "matches",
-    "sportif", "sportifs", "sportive",
+    "sportif", "sportifs", "sportive",    "sportif", "sportifs", "sportive",
+    "athlete", "athletes", "jeux mediterraneens", "jm tarente",
+    "medaille", "medailles", "demi-finale", "quart de finale",
+    "selection nationale", "sport",
+]
+
 ]
 
 GUERRE = [
