@@ -110,8 +110,6 @@ SPORT = [
     "selection nationale", "sport",
 ]
 
-]
-
 GUERRE = [
     "guerre", "guerres", "conflit arme", "offensive",
     "bombardement", "bombardements", "bombarde",
