@@ -2,9 +2,10 @@ name: Site Monitoring
 
 on:
   schedule:
-    - cron: '0 5-19/2 * * *'
-    - cron: '0 6-20/2 * * *'
-    - cron: '30 5-20 * * *'
+    - cron: '37 5 * * *'
+      timezone: 'Africa/Tunis'
+    - cron: '7 8-22/2 * * *'
+      timezone: 'Africa/Tunis'
   workflow_dispatch:
 
 permissions:
@@ -16,6 +17,7 @@ concurrency:
 jobs:
   monitor:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     steps:
     - uses: actions/checkout@v4
@@ -29,8 +31,6 @@ jobs:
       run: pip install requests beautifulsoup4
 
     - name: Run monitoring script
-      env:
-        SCAN_MODE: ${{ github.event.schedule == '0 5-19/2 * * *' && 'complet' || 'institutions' }}
       run: python monitor.py
 
     - name: Save state
