@@ -61,7 +61,7 @@ import unicodedata
 
 # ---- FILTRAGE SPORT / GUERRE -------------------------------------------
 # False = mode observation : on journalise sans filtrer.
-FILTRAGE_ACTIF = TRUE
+FILTRAGE_ACTIF = True
 
 SITES_EXEMPTES = {
     "CMF", "BVMT", "BCT", "BCT Actualites", "INS",
