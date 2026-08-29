@@ -81,6 +81,16 @@ def probe_bct():
     except Exception as e:
         print(f"BCT erreur: {e}")
 
+def get_ytd(symbol):
+    """Variation depuis la cloture du 31/12, via la serie YTD de Yahoo."""
+    url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?range=ytd&interval=1d"
+    res = requests.get(url, headers=HEADERS, timeout=15).json()["chart"]["result"][0]
+    closes = [c for c in res["indicators"]["quote"][0]["close"] if c is not None]
+    ref = res["meta"].get("chartPreviousClose") or (closes[0] if closes else None)
+    prix = res["meta"]["regularMarketPrice"]
+    return (prix / ref - 1) * 100 if ref else None
+
+
 def main():
     probe_bct()
     lines = ["== BOURSE DE TUNIS =="]
