@@ -294,7 +294,7 @@ def monitor():
                     uniques[h] = t
             new = uniques
             new = {h: t for h, t in new.items() if not any(x in t for x in EXCLUS)}
-                        for href, title in list(new.items()):
+            for href, title in list(new.items()):
                 motif = motif_rejet(site, title, href)
                 if motif:
                     print(f"   [FILTRE {motif}] {title[:80]}")
