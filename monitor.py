@@ -293,7 +293,7 @@ def monitor():
             
             uniques = {}
             for h, t in new.items():
-                if t not in uniques.values():
+                if _norm(t)[:60] not in [_norm(v)[:60] for v in uniques.values()]:
                     uniques[h] = t
             new = uniques
             new = {h: t for h, t in new.items() if not any(x in t for x in EXCLUS)}
