@@ -81,7 +81,9 @@ EXCEPTIONS = [
     "offensive commerciale", "offensive marketing",
     "conflit d'interets", "club de paris",
     "transfert de fonds", "transferts des tunisiens",
-    "coupe budgetaire", "coupes budgetaires", "credit scoring",
+    "coupe budgetaire", "coupes budgetaires", "credit scoring",  
+    "/culture", "/cinema", "/arts/", "/art/", "/musique", "/spectacles",
+
 ]
 
 URL_EXCLUS = [
@@ -122,6 +124,24 @@ GUERRE = [
     "hamas", "hezbollah", "houthis", "gaza", "cisjordanie",
 ]
 
+ARTS = [
+    "cinema", "cinematographique", "cinematographiques", "film", "films",
+    "court-metrage", "long-metrage", "documentaire", "realisateur",
+    "realisatrice", "actrice", "comedien", "comedienne", "casting",
+    "tournage", "bande-annonce", "box-office", "netflix", "oscars",
+    "festival", "festivals", "jcc", "journees cinematographiques",
+    "festival de carthage", "theatre", "spectacle", "spectacles",
+    "piece de theatre", "opera", "chorale", "concert de", "musicien",
+    "musicienne", "chanteur", "chanteuse", "album", "albums", "clip",
+    "danse", "danseur", "danseuse", "peintre", "peinture", "sculpteur",
+    "sculpture", "artiste", "artistes", "artistique", "artistiques",
+    "beaux-arts", "arts plastiques", "oeuvre d'art", "galerie d'art",
+    "exposition artistique", "vernissage", "biennale", "musee", "musees",
+    "patrimoine culturel", "culturel", "culturelle", "culturels",
+    "culturelles", "ministere de la culture", "romancier", "poete",
+    "poesie", "litteraire", "salon du livre",
+]
+
 
 def _norm(s):
     """Minuscules, sans accents, apostrophes uniformisees."""
@@ -137,6 +157,8 @@ def _compile(mots):
 
 _RE_SPORT = _compile(SPORT)
 _RE_GUERRE = _compile(GUERRE)
+_RE_ARTS = _compile(ARTS)
+
 
 
 def motif_rejet(site, title, href):
@@ -156,6 +178,10 @@ def motif_rejet(site, title, href):
     m = _RE_GUERRE.search(t)
     if m:
         return "guerre: " + m.group(1)
+    m = _RE_ARTS.search(t)
+    if m:
+        return "arts: " + m.group(1)
+
     return None
 # ------------------------------------------------------------------------
 
