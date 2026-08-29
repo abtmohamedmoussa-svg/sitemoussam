@@ -285,12 +285,7 @@ def monitor():
             new = {h: t for h, t in articles.items() if h not in known}
             if "Tunisie" in site:
                 new = {h: t for h, t in new.items() if "tunis" in t.lower()}
-                        for href, title in list(new.items()):
-                motif = motif_rejet(site, title, href)
-                if motif:
-                    print(f"   [FILTRE {motif}] {title[:80]}")
-                    if FILTRAGE_ACTIF:
-                        del new[href]
+        
 
             
             uniques = {}
