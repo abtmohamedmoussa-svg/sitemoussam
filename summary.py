@@ -57,8 +57,8 @@ HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/
 # ---------------------------------------------------------------- utilitaires
 
 def _num(s):
-    """'19 450,38' -> 19450.38"""
-    return float(s.replace(" ", "").replace("\u00a0", "").replace(",", "."))
+    """'19 450,38' -> 19450.38"""   
+    return float(re.sub(r"[^\d,.-]", "", s).replace(",", "."))
 
 
 def _fr(x, dec=2):
