@@ -6,36 +6,45 @@ from datetime import datetime
 
 NTFY_TOPIC = "moussa-news-1313"
 
-# Diagnostics ponctuels. Remettre a False une fois le probleme identifie.
-PROBE_IRBE7 = False
-PROBE_BCT = False
+# Page unique irbe7 : tableau des actions + tableau des indices, tous deux
+# avec le SIGNE de la variation. Remplace les 10 pages individuelles, ou le
+# signe est absent du texte et ou la colonne 'Cloture Veille' reprend le
+# cours du jour au lieu de celui de la veille.
+IRBE7_URL = "https://irbe7.com/actifs"
 
-BVMT_ASSETS = [
-    ("TUNINDEX", "https://irbe7.com/actifs/TUNINDEX/TN0009050014"),
-    ("Indice BANQUES", "https://irbe7.com/actifs/BANQUES/TN0009050030"),
-    ("Indice SERVICES FIN", "https://irbe7.com/actifs/SERVICES%20FINANCIER/TN0009050055"),
-    ("Attijari Bank", "https://irbe7.com/actifs/TJARI/TN0001600154"),
-    ("Attijari Leasing", "https://irbe7.com/actifs/ATTIJARI%20LEASING/TN0006610018"),
-    ("Amen Bank", "https://irbe7.com/actifs/AMEN%20BANK/TN0003400058"),
-    ("BIAT", "https://irbe7.com/actifs/BIAT/TN0001800457"),
-    ("Poulina PGH", "https://irbe7.com/actifs/POULINA%20GP%20HOLDING/TN0005700018"),
-    ("SFBT", "https://irbe7.com/actifs/SFBT/TN0001100254"),
-    ("TPR", "https://irbe7.com/actifs/TPR/TN0007270010"),
+# (libelle affiche, libelle exact dans le tableau irbe7)
+CIBLES_BVMT = [
+    ("TUNINDEX",            "TUNINDEX"),
+    ("Indice BANQUES",      "BANQUES"),
+    ("Indice SERVICES FIN", "SERVICES FINANCIER"),
+    ("Attijari Bank",       "ATTIJARI BANK"),
+    ("Attijari Leasing",    "ATTIJARI LEASING"),
+    ("Amen Bank",           "AMEN BANK"),
+    ("BIAT",                "BIAT"),
+    ("Poulina PGH",         "POULINA GP HOLDING"),
+    ("SFBT",                "SFBT"),
+    ("TPR",                 "TPR"),
 ]
 
-# Clotures du 31/12/2025, a renseigner une fois par an.
-# None = mention YTD simplement omise, sans erreur.
+# Clotures du 31/12/2025 - source : Physionomie Boursiere BVMT, seance
+# n°248 du mercredi 31 decembre 2025. A remplacer chaque 2 janvier.
+#
+# ATTENTION : le YTD calcule ici est une performance de COURS, pas une
+# performance totale. Il ne neutralise ni les detachements de dividende
+# ni les operations sur titres (actions gratuites, augmentations de
+# capital, splits). Il sous-estime donc la performance reelle des lignes
+# ayant detache un coupon en 2026.
 CLOTURE_2025 = {
-    "TUNINDEX": None,
-    "Indice BANQUES": None,
-    "Indice SERVICES FIN": None,
-    "Attijari Bank": None,
-    "Attijari Leasing": None,
-    "Amen Bank": None,
-    "BIAT": None,
-    "Poulina PGH": None,
-    "SFBT": None,
-    "TPR": None,
+    "TUNINDEX":            13449.95,   # bloc indice, page 2 du rapport
+    "Indice BANQUES":       9669.60,   # INDICE DES BANQUES, "Indice du Jour"
+    "Indice SERVICES FIN": 18731.77,   # INDICE DES SERVICES FINANCIERS
+    "Attijari Bank":          66.890,  # colonne "Cloture", page 6
+    "Attijari Leasing":       29.250,
+    "Amen Bank":              50.000,
+    "BIAT":                  111.000,
+    "Poulina PGH":            18.500,
+    "SFBT":                   12.600,
+    "TPR":                    11.500,
 }
 
 INSTRUMENTS = [
@@ -56,203 +65,138 @@ INSTRUMENTS = [
 
 BCT_URL = "https://www.bct.gov.tn/bct/siteprod/indicateurs.jsp"
 
-# Libelles cibles sur la page BCT. Plusieurs variantes par indicateur :
-# le libelle exact n'est confirme que pour les billets en circulation.
-BCT_CIBLES = [
-    ("Reserves de change", [
-        r"AVOIRS\s+NETS\s+EN\s+DEVISES",
-        r"RESERVES\s+EN\s+DEVISES",
-        r"RESERVES\s+DE\s+CHANGE",
-        r"AVOIRS\s+EN\s+DEVISES",
-    ]),
-    ("Billets en circulation", [
-        r"BILLETS\s+ET\s+MONNAIES\s+EN\s+CIRCULATION",
-    ]),
-    ("Refinancement", [
-        r"VOLUME\s+GLOBAL\s+DE\s+REFINANCEMENT",
-        r"VOLUME\s+DE\s+REFINANCEMENT",
-        r"REFINANCEMENT\s+GLOBAL",
-        r"REFINANCEMENT",
-    ]),
-]
-
 HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
 
-# Nombre francais : '19 450,38', '19 450,38' (espace fine), '30186', '-126,2'
-RE_NOMBRE = re.compile(
-    r"-?\d{1,3}(?:[ \u00a0\u202f]\d{3})+(?:,\d+)?|-?\d+(?:,\d+)?"
-)
+# Nombre francais avec milliers groupes par 3 : '19 450,38', '87,15'.
+# Le (?<!\w) evite de mordre sur le '1' d'un ticker type 'PX1'.
+_MONTANT = re.compile(r"(?<!\w)\d{1,3}(?:[ \u00a0\u202f]\d{3})*,\d+")
+_PCT = re.compile(r"([+-])\s?(\d+,\d+)\s*%")
+
+_NB = r"(\d[\d\s\u00a0\u202f]*(?:,\d+)?)"
+P_DEVISES = re.compile(
+    r"AVOIRS NETS EN DEVISES\s+AU\s+(\d{2}/\d{2}/\d{4}).{0,20}?EN MDT\s*:?\s*"
+    + _NB + r".{0,40}?IMPORTATION\s*:?\s*" + _NB)
+P_BILLETS = re.compile(
+    r"BILLETS ET MONNAIES EN CIRCULATION\s+AU\s+(\d{2}/\d{2}/\d{4})\s*:?\s*" + _NB)
+P_REFI = re.compile(
+    r"VOLUME GLOBAL DE REFINANCEMENT\s+AU\s+(\d{2}/\d{2}/\d{4})\s*:?\s*" + _NB)
 
 
 # ---------------------------------------------------------------- utilitaires
 
 def _num(s):
-    """'19 450,38' -> 19450.38 (tolere toutes les variantes d'espace)."""
     return float(re.sub(r"[^\d,.-]", "", s).replace(",", "."))
 
 
 def _fr(x, dec=2):
-    """19450.38 -> '19 450,38'"""
     return f"{x:,.{dec}f}".replace(",", " ").replace(".", ",")
 
 
 def _plat(s):
-    """Minuscules -> majuscules, sans accents, espaces normalises."""
     s = unicodedata.normalize("NFD", s)
     s = "".join(c for c in s if unicodedata.category(c) != "Mn")
-    return re.sub(r"\s+", " ", s).upper()
+    return re.sub(r"\s+", " ", s).strip().upper()
 
 
-# ------------------------------------------------------------------ irbe7 BVMT
-
-def probe_irbe7():
-    """HTML brut autour des pourcentages : identifie le balisage du signe."""
-    url = "https://irbe7.com/actifs/TJARI/TN0001600154"
-    html = requests.get(url, headers=HEADERS, timeout=20).text
-    for i, m in enumerate(re.finditer(r"\d+,\d+\s*%", html)):
-        print(f"--- occurrence {i} ---")
-        print(html[max(0, m.start() - 500):m.end() + 120])
-        if i >= 2:
-            break
+def _signe(x, dec=2):
+    return f"{'+' if x >= 0 else '-'}{_fr(abs(x), dec)}"
 
 
-def get_irbe7(name, url):
-    """Cours BVMT depuis irbe7.com.
+# ------------------------------------------------------------------ BVMT
 
-    irbe7 n'ecrit pas le signe de la variation dans le texte : le sens est
-    reconstruit a partir de la ligne 'Cloture veille'. Si elle est
-    introuvable, la variation est marquee '?' plutot que d'afficher un
-    signe invente.
-    """
+def get_bvmt():
+    """Cours et variations signees, en un seul appel sur irbe7.com/actifs."""
+    lines = ["== BOURSE DE TUNIS =="]
     try:
-        r = requests.get(url, headers=HEADERS, timeout=20)
+        r = requests.get(IRBE7_URL, headers=HEADERS, timeout=25)
         if r.status_code != 200:
-            print(f"Echec {name}: HTTP {r.status_code}")
-            return f"{name} : indisponible"
-        text = BeautifulSoup(r.content, 'html.parser').get_text(" ", strip=True)
+            print(f"irbe7: HTTP {r.status_code}")
+            return lines + ["Indisponible"]
 
-        m = re.search(r"(\d[\d\s\u00a0\u202f]*,\d+)\s+(\d[\d\s\u00a0\u202f]*,\d+)\s*%", text)
-        if not m:
-            print(f"Echec extraction {name}: {text[:120]}")
-            return f"{name} : indisponible"
+        soup = BeautifulSoup(r.content, 'html.parser')
+        rangs = []
+        for tr in soup.find_all("tr"):
+            cells = [c.get_text(" ", strip=True) for c in tr.find_all(["td", "th"])]
+            if len(cells) >= 2:
+                rangs.append((_plat(cells[0]), _plat(" ".join(cells))))
+        print(f"irbe7: {len(rangs)} lignes de tableau")
 
-        prix = _num(m.group(1))
-        var = _num(m.group(2))
+        for nom, lib in CIBLES_BVMT:
+            trouve = None
+            for premier, texte in rangs:
+                # (\s|$) evite que 'TUNINDEX' capture la ligne 'TUNINDEX20'
+                if re.match(re.escape(lib) + r"(\s|$)", premier):
+                    trouve = texte
+                    break
+            if not trouve:
+                print(f"irbe7: '{lib}' introuvable")
+                lines.append(f"{nom} : indisponible")
+                continue
+            pct = _PCT.search(trouve)
+            montants = _MONTANT.findall(trouve)
+            if not (pct and montants):
+                print(f"irbe7: '{lib}' non parse | {trouve[:110]}")
+                lines.append(f"{nom} : indisponible")
+                continue
+            prix = _num(montants[0])
+            var = (-1 if pct.group(1) == "-" else 1) * _num(pct.group(2))
 
-        signe = None
-        v = re.search(r"veille\D{0,10}(\d[\d\s\u00a0\u202f]*,\d+)", text, re.I)
-        if v:
-            veille = _num(v.group(1))
-            if veille > 0:
-                ecart = (prix / veille - 1) * 100
-                if abs(ecart) >= 0.005:
-                    signe = -1 if ecart < 0 else 1
-                elif var < 0.005:
-                    signe = 1
-        else:
-            i = text.lower().find("veille")
-            extrait = text[max(0, i - 90):i + 90] if i >= 0 else "MOT ABSENT | " + text[:200]
-            print(f"   veille ? {name}: {extrait}")
-
-        if signe is None:
-            bloc = f"({_fr(var)}% ?)"
-        else:
-            bloc = f"({'+' if signe > 0 else '-'}{_fr(var)}%"
-            ref = CLOTURE_2025.get(name)
+            parts = [f"{_signe(var)}%"]
+            ref = CLOTURE_2025.get(nom)
             if ref:
-                ytd = (prix / ref - 1) * 100
-                bloc += f" | YTD {'+' if ytd >= 0 else '-'}{_fr(abs(ytd))}%"
-            bloc += ")"
-
-        print(f"OK {name}")
-        return f"{name} : {_fr(prix)} {bloc}"
+                parts.append(f"YTD {_signe((prix / ref - 1) * 100)}%")
+            print(f"OK {nom} {prix} {var:+.2f}%")
+            lines.append(f"{nom} : {_fr(prix)} ({' | '.join(parts)})")
     except Exception as e:
-        print(f"Erreur {name}: {e}")
-    return f"{name} : indisponible"
+        print(f"Erreur irbe7: {e}")
+        return lines + ["Indisponible"]
+    return lines
 
 
 # --------------------------------------------------------------------- BCT
 
-def _bct_texte():
-    """Texte de la page indicateurs BCT, encodage force.
-
-    La page est servie en windows-1252 ; sans from_encoding, BeautifulSoup
-    la decode en iso-8859-2 et produit 'Mis ŕ jour' au lieu de 'Mis a jour'.
-    """
-    r = requests.get(BCT_URL, headers=HEADERS, timeout=30)
-    if r.status_code != 200:
-        print(f"BCT: HTTP {r.status_code}")
-        return None
-    soup = BeautifulSoup(r.content, 'html.parser', from_encoding='windows-1252')
-    return soup.get_text(" ", strip=True)
-
-
-def probe_bct():
-    """Liste les intitules de rubriques de la page BCT."""
-    text = _bct_texte()
-    if not text:
-        return
-    txt = _plat(text)
-    d = re.search(r"(\d{2}/\d{2}/\d{4})", txt)
-    print("BCT date:", d.group(1) if d else "inconnue")
-    print("BCT rubriques trouvees :")
-    for m in re.finditer(r"\b([IVX]{1,5})-\s*([A-Z'()/ ]{6,70})", txt):
-        suite = txt[m.end():m.end() + 90]
-        print(f"   {m.group(1)}- {m.group(2).strip()}  >>>  {suite[:70]}")
-
-
-def _bct_ligne(txt, motifs):
-    """Retourne (date, [valeurs]) pour le premier motif qui matche."""
-    for p in motifs:
-        m = re.search(p, txt)
-        if not m:
-            continue
-        suite = txt[m.end():m.end() + 200]
-        d = re.match(r"\s*(\d{1,2}/\d{1,2})", suite)
-        date = d.group(1) if d else None
-        if d:
-            suite = suite[d.end():]
-        vals = [_num(x) for x in RE_NOMBRE.findall(suite)[:3]]
-        if vals:
-            return date, vals, m.group(0)
-    return None, [], None
-
-
 def get_bct():
-    """Indicateurs quotidiens BCT : reserves, billets, refinancement.
-
-    Colonnes de la page (verifiees sur la ligne 'BILLETS ET MONNAIES') :
-    [0] jour J, [1] jour j-1, [2] meme jour annee precedente.
-    """
-    lines = []
+    """Bloc de synthese des indicateurs quotidiens BCT."""
+    lines = ["== BCT =="]
     try:
-        text = _bct_texte()
-        if not text:
-            return ["BCT : indisponible"]
-        txt = _plat(text)
+        r = requests.get(BCT_URL, headers=HEADERS, timeout=30)
+        if r.status_code != 200:
+            print(f"BCT: HTTP {r.status_code}")
+            return lines + ["Indisponible"]
+        # windows-1252 force : sinon BeautifulSoup decode en iso-8859-2.
+        soup = BeautifulSoup(r.content, 'html.parser', from_encoding='windows-1252')
+        txt = _plat(soup.get_text(" ", strip=True))
 
-        d = re.search(r"(\d{2}/\d{2}/\d{4})", txt)
-        lines.append(f"== BCT ({d.group(1) if d else 'date inconnue'}) ==")
+        m = P_DEVISES.search(txt)
+        if m:
+            lines.append(f"Reserves de change ({m.group(1)[:5]}) : "
+                         f"{_fr(_num(m.group(2)), 0)} MDT - "
+                         f"{_fr(_num(m.group(3)), 0)} j import.")
+            print(f"OK BCT devises {m.group(2)} MDT / {m.group(3)} jours")
+        else:
+            lines.append("Reserves de change : indisponible")
+            print("BCT: avoirs nets en devises introuvables")
 
-        for nom, motifs in BCT_CIBLES:
-            date, vals, libelle = _bct_ligne(txt, motifs)
-            if not vals:
-                print(f"BCT: '{nom}' introuvable")
-                lines.append(f"{nom} : indisponible")
-                continue
-            ligne = f"{nom} : {_fr(vals[0], 1)} MDT"
-            if len(vals) >= 2:
-                delta = vals[0] - vals[1]
-                ligne += f" (j-1 {'+' if delta >= 0 else '-'}{_fr(abs(delta), 1)}"
-                if len(vals) >= 3 and vals[2]:
-                    an = (vals[0] / vals[2] - 1) * 100
-                    ligne += f" | 1 an {'+' if an >= 0 else '-'}{_fr(abs(an))}%"
-                ligne += ")"
-            print(f"OK BCT {nom} [{libelle}] {vals}")
-            lines.append(ligne)
+        m = P_BILLETS.search(txt)
+        if m:
+            lines.append(f"Billets en circulation ({m.group(1)[:5]}) : "
+                         f"{_fr(_num(m.group(2)), 0)} MDT")
+            print(f"OK BCT billets {m.group(2)}")
+        else:
+            lines.append("Billets en circulation : indisponible")
+            print("BCT: billets introuvables")
+
+        m = P_REFI.search(txt)
+        if m:
+            lines.append(f"Refinancement ({m.group(1)[:5]}) : "
+                         f"{_fr(_num(m.group(2)), 0)} MDT")
+            print(f"OK BCT refinancement {m.group(2)}")
+        else:
+            lines.append("Refinancement : indisponible")
+            print("BCT: volume global de refinancement introuvable")
     except Exception as e:
         print(f"Erreur BCT: {e}")
-        return ["BCT : indisponible"]
+        return lines + ["Indisponible"]
     return lines
 
 
@@ -298,16 +242,7 @@ def fmt(price, change, unit, ytd=None):
 # ---------------------------------------------------------------------- main
 
 def main():
-    if PROBE_IRBE7:
-        probe_irbe7()
-        return
-    if PROBE_BCT:
-        probe_bct()
-        return
-
-    lines = ["== BOURSE DE TUNIS =="]
-    for name, url in BVMT_ASSETS:
-        lines.append(get_irbe7(name, url))
+    lines = get_bvmt()
 
     lines.append("")
     lines.extend(get_bct())
