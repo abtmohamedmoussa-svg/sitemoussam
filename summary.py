@@ -1,5 +1,6 @@
 import re
 import unicodedata
+import os
 import socket
 import requests
 import urllib3.util.connection as _u3conn
@@ -294,24 +295,22 @@ def fmt(price, change, unit, ytd=None):
 # ---------------------------------------------------------------------- main
 
 def send_telegram(message):
-    """Envoie le message via un bot Telegram.
-
-    Le bot doit etre deja present dans le chat/groupe prive (TELEGRAM_CHAT_ID).
-    TELEGRAM_BOT_TOKEN et TELEGRAM_CHAT_ID sont des secrets GitHub.
-    """
-    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+    """Envoie le message via un bot Telegram."""
+    bot_token = os.getenv("TELEGRAM_BOT_TOKEN", "")
+    chat_id = os.getenv("TELEGRAM_CHAT_ID", "")
+    
+    if not bot_token or not chat_id:
         print("Telegram non configure (BOT_TOKEN ou CHAT_ID absent)")
         return
     try:
-        url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+        url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
         SESSION.post(url, json={
-            "chat_id": TELEGRAM_CHAT_ID,
+            "chat_id": chat_id,
             "text": message,
-            "parse_mode": "HTML"  # Permet <b>, <i>, <code>
+            "parse_mode": "HTML"
         }, timeout=15)
         print("Resume Telegram envoye")
     except Exception as e:
-        # Non bloquant : les donnees sont deja dans les logs.
         print(f"Envoi Telegram KO (non bloquant): {e}")
 
 
