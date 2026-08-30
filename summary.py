@@ -335,14 +335,14 @@ def main():
     print("\n" + message + "\n")
 
     # Format Telegram : cercles colores (vert/rouge) pour direction + gras/italique
+    import re
     message_telegram = message.replace(
         "== ", "<b>== ").replace(" ==", " ==</b>"
     ).replace("YTD ", "<i>YTD </i>")
     
-    # Ajouter cercles colores : 🟢 pour +, 🔴 pour -
-    import re
+    # Ajouter cercles colores : 🟢 pour + (tous les formats virgule ET point)
     message_telegram = re.sub(
-        r"([\+\-])(\d+,\d+%)",
+        r"([\+\-])(\d+[.,]\d+%)",
         lambda m: ("🟢 " if m.group(1) == "+" else "🔴 ") + m.group(1) + m.group(2),
         message_telegram)
 
