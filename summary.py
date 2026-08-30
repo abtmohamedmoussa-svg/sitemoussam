@@ -334,10 +334,17 @@ def main():
     message = "\n".join(lines)
     print("\n" + message + "\n")
 
-    # Formats pour ntfy (texte brut) et Telegram (HTML markup)
+    # Format Telegram : emojis pour direction + gras pour titres + italique pour YTD
     message_telegram = message.replace(
-        "== ", "<b>== ").replace(" ==", " ==</b>"  # titres en gras
-    ).replace("YTD ", "<i>YTD </i>")  # YTD en italique
+        "== ", "<b>== ").replace(" ==", " ==</b>"
+    ).replace("YTD ", "<i>YTD </i>")
+    
+    # Ajouter emojis de direction : (+ ou - suivi de chiffres et %)
+    import re
+    message_telegram = re.sub(
+        r"(\()([\+\-]\d+,\d+%)",
+        lambda m: m.group(1) + ("📈 " if m.group(2).startswith("+") else "📉 ") + m.group(2),
+        message_telegram)
     
     try:
         SESSION.post(
