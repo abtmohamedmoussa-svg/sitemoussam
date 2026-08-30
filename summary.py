@@ -334,33 +334,17 @@ def main():
     message = "\n".join(lines)
     print("\n" + message + "\n")
 
-    # Format Telegram : emojis pour direction + gras pour titres + italique pour YTD
+    # Format Telegram : cercles colores (vert/rouge) pour direction + gras/italique
     message_telegram = message.replace(
         "== ", "<b>== ").replace(" ==", " ==</b>"
     ).replace("YTD ", "<i>YTD </i>")
     
-    # Ajouter emojis de direction : (+ ou - suivi de chiffres et %)
+    # Ajouter cercles colores : 🟢 pour +, 🔴 pour -
     import re
     message_telegram = re.sub(
-        r"(\()([\+\-]\d+,\d+%)",
-        lambda m: m.group(1) + ("📈 " if m.group(2).startswith("+") else "📉 ") + m.group(2),
+        r"([\+\-])(\d+,\d+%)",
+        lambda m: ("🟢 " if m.group(1) == "+" else "🔴 ") + m.group(1) + m.group(2),
         message_telegram)
-    
-    try:
-        SESSION.post(
-            f"https://ntfy.sh/{NTFY_TOPIC}",
-            data=message.encode('utf-8'),
-            headers={
-                "Title": f"Marches du {datetime.now().strftime('%d/%m %H:%M')}",
-                "Tags": "chart_with_upwards_trend",
-                "Priority": "default"
-            },
-            timeout=20
-        )
-        print("Resume envoye")
-    except Exception as e:
-        # Le resume est deja dans les logs ci-dessus : on n'echoue pas le run.
-        print(f"Envoi ntfy KO (non bloquant): {e}")
 
     send_telegram(message_telegram)
 
