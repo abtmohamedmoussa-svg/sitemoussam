@@ -293,6 +293,28 @@ def fmt(price, change, unit, ytd=None):
 
 # ---------------------------------------------------------------------- main
 
+def send_telegram(message):
+    """Envoie le message via un bot Telegram.
+
+    Le bot doit etre deja present dans le chat/groupe prive (TELEGRAM_CHAT_ID).
+    TELEGRAM_BOT_TOKEN et TELEGRAM_CHAT_ID sont des secrets GitHub.
+    """
+    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+        print("Telegram non configure (BOT_TOKEN ou CHAT_ID absent)")
+        return
+    try:
+        url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+        SESSION.post(url, json={
+            "chat_id": TELEGRAM_CHAT_ID,
+            "text": message,
+            "parse_mode": "HTML"  # Permet <b>, <i>, <code>
+        }, timeout=15)
+        print("Resume Telegram envoye")
+    except Exception as e:
+        # Non bloquant : les donnees sont deja dans les logs.
+        print(f"Envoi Telegram KO (non bloquant): {e}")
+
+
 def main():
     lines = get_bvmt()
 
@@ -312,6 +334,12 @@ def main():
 
     message = "\n".join(lines)
     print("\n" + message + "\n")
+
+    # Formats pour ntfy (texte brut) et Telegram (HTML markup)
+    message_telegram = message.replace(
+        "== ", "<b>== ").replace(" ==", " ==</b>"  # titres en gras
+    ).replace("YTD ", "<i>YTD </i>")  # YTD en italique
+    
     try:
         SESSION.post(
             f"https://ntfy.sh/{NTFY_TOPIC}",
@@ -327,6 +355,8 @@ def main():
     except Exception as e:
         # Le resume est deja dans les logs ci-dessus : on n'echoue pas le run.
         print(f"Envoi ntfy KO (non bloquant): {e}")
+
+    send_telegram(message_telegram)
 
 
 if __name__ == "__main__":
