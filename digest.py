@@ -1,12 +1,13 @@
 import os
 import json
 import requests
+import time
 from datetime import datetime, timedelta
 
 NTFY_TOPIC = "moussa-news-1313"
 JOURNAL_FILE = "journal.json"
 OUT_DIR = "public"
-MODELES = ["gemini-3.6-flash", "gemini-flash-latest", "gemini-3.6-pro"]
+MODELES = ["gemini-3.6-flash", "gemini-flash-latest"]
 
 owner = os.getenv("GITHUB_REPOSITORY_OWNER", "").lower()
 BASE_URL = f"https://{owner}.github.io/veille-tunisie"
@@ -35,21 +36,42 @@ FORMAT DE SORTIE: uniquement du HTML (h2, p, ul, li, a). Pas de <html> ni <body>
 ARTICLES DU JOUR:
 """
 
+def modeles_disponibles(key):
+    try:
+        r = requests.get(f"https://generativelanguage.googleapis.com/v1beta/models?key={key}", timeout=30)
+        if r.status_code == 200:
+            noms = [m["name"].replace("models/", "") for m in r.json().get("models", [])
+                    if "generateContent" in m.get("supportedGenerationMethods", [])]
+            print("Modeles disponibles: " + ", ".join(noms))
+            return noms
+        print(f"ListModels: HTTP {r.status_code}")
+    except Exception as e:
+        print(f"ListModels erreur: {e}")
+    return []
+
 def gemini(prompt):
     key = os.getenv("GEMINI_API_KEY")
     if not key:
         print("GEMINI_API_KEY absente")
         return None
-    for m in MODELES:
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent?key={key}"
-        try:
-            r = requests.post(url, json={"contents": [{"parts": [{"text": prompt}]}]}, timeout=180)
-            if r.status_code == 200:
-                print(f"Modele utilise: {m}")
-                return r.json()["candidates"][0]["content"]["parts"][0]["text"]
-            print(f"{m}: HTTP {r.status_code} - {r.text[:200]}")
-        except Exception as e:
-            print(f"{m}: erreur {e}")
+    candidats = list(MODELES)
+    for extra in modeles_disponibles(key):
+        if "flash" in extra and extra not in candidats:
+            candidats.append(extra)
+    for tentative in range(3):
+        for m in candidats:
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent?key={key}"
+            try:
+                r = requests.post(url, json={"contents": [{"parts": [{"text": prompt}]}]}, timeout=180)
+                if r.status_code == 200:
+                    print(f"Modele utilise: {m}")
+                    return r.json()["candidates"][0]["content"]["parts"][0]["text"]
+                print(f"{m}: HTTP {r.status_code} - {r.text[:150]}")
+            except Exception as e:
+                print(f"{m}: erreur {e}")
+        if tentative < 2:
+            print("Surcharge Google, nouvel essai dans 45s...")
+            time.sleep(45)
     return None
 
 def nettoyer(txt):
