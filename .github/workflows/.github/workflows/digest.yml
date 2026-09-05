@@ -1,0 +1,36 @@
+name: Synthese quotidienne
+
+on:
+  schedule:
+    - cron: '0 17 * * *'
+  workflow_dispatch:
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - run: pip install requests
+
+    - name: Generer la synthese
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      run: python digest.py
+
+    - name: Publier sur le repo public
+      env:
+        PAGES_TOKEN: ${{ secrets.PAGES_TOKEN }}
+      run: |
+        git clone https://x-access-token:${PAGES_TOKEN}@github.com/${{ github.repository_owner }}/veille-tunisie.git site
+        cp public/*.html site/
+        cd site
+        git config user.name "digest-bot"
+        git config user.email "bot@users.noreply.github.com"
+        git add .
+        git diff --staged --quiet || git commit -m "Synthese du jour"
+        git push
