@@ -26,7 +26,7 @@ jobs:
       env:
         PAGES_TOKEN: ${{ secrets.PAGES_TOKEN }}
       run: |
-        git clone https://x-access-token:${PAGES_TOKEN}@github.com/${{ github.repository_owner }}/veille-tunisie.git site
+        git clone "https://x-access-token:${PAGES_TOKEN}@github.com/${{ github.repository_owner }}/veille-tunisie.git" site
         cp public/*.html site/
         cd site
         git config user.name "digest-bot"
