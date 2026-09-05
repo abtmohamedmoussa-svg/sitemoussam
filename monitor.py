@@ -7,6 +7,7 @@ from datetime import datetime
 
 NTFY_TOPIC = "moussa-news-1313"
 STATE_FILE = "state.json"
+JOURNAL_FILE = "journal.json"
 MAX_NOTIF_PER_SITE = 5
 
 SITES = {
@@ -290,10 +291,25 @@ def save_state(state):
     with open(STATE_FILE, "w", encoding="utf-8") as f:
         json.dump(state, f, ensure_ascii=False, indent=2)
 
+def load_journal():
+    if os.path.exists(JOURNAL_FILE):
+        with open(JOURNAL_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {}
+
+def save_journal(j):
+    from datetime import timedelta
+    limite = (datetime.now() - timedelta(days=35)).strftime("%Y-%m-%d")
+    j = {d: v for d, v in j.items() if d >= limite}
+    with open(JOURNAL_FILE, "w", encoding="utf-8") as f:
+        json.dump(j, f, ensure_ascii=False, indent=1)
+
 def monitor():
     print(f"[{datetime.now()}] Verification des sites...")
     state = load_state()
-
+    journal = load_journal()
+    jour = datetime.now().strftime("%Y-%m-%d")
+    journal.setdefault(jour, [])
     for site, url in SITES.items():
         key = site + "|urls"
         print(f"-> {site}")
@@ -323,6 +339,8 @@ def monitor():
                     uniques[h] = t
             new = uniques
             new = {h: t for h, t in new.items() if not any(x in t for x in EXCLUS)}
+                        for h_, t_ in new.items():
+                journal[jour].append({"site": site, "titre": t_, "lien": h_})
             for href, title in list(new.items()):
                 motif = motif_rejet(site, title, href)
                 if motif:
@@ -340,6 +358,7 @@ def monitor():
         state[key] = list(dict.fromkeys(list(articles.keys()) + list(known)))[:300]
 
     save_state(state)
+    save_journal(journal)
 
 if __name__ == "__main__":
     monitor()
