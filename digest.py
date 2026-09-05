@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 NTFY_TOPIC = "moussa-news-1313"
 JOURNAL_FILE = "journal.json"
 OUT_DIR = "public"
-MODELES = ["gemini-3.6-flash", "gemini-flash-latest"]
+MODELES = ["gemini-3.8-flash", "gemini-3.7-flash", "gemini-3.6-flash", "gemini-flash-latest"]
 
 owner = os.getenv("GITHUB_REPOSITORY_OWNER", "").lower()
 BASE_URL = f"https://{owner}.github.io/veille-tunisie"
