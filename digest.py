@@ -49,30 +49,46 @@ def modeles_disponibles(key):
         print(f"ListModels erreur: {e}")
     return []
 
+EXCLUS_MODELES = ("image", "tts", "transcribe", "omni", "robotics", "lyria",
+                  "nano", "deep-research", "computer-use", "embedding", "gemma", "2.5")
+
 def gemini(prompt):
     key = os.getenv("GEMINI_API_KEY")
     if not key:
         print("GEMINI_API_KEY absente")
         return None
-    candidats = list(MODELES)
-    for extra in modeles_disponibles(key):
-        if "flash" in extra and extra not in candidats:
-            candidats.append(extra)
-    for tentative in range(3):
-        for m in candidats:
+
+    dispo = modeles_disponibles(key)
+    bons = list(MODELES)
+    for m in dispo:
+        if ("flash" in m and "lite" not in m
+                and not any(x in m for x in EXCLUS_MODELES) and m not in bons):
+            bons.append(m)
+    secours = [m for m in dispo
+               if "lite" in m and not any(x in m for x in EXCLUS_MODELES)]
+
+    def essayer(liste):
+        for m in liste:
             url = f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent?key={key}"
             try:
                 r = requests.post(url, json={"contents": [{"parts": [{"text": prompt}]}]}, timeout=180)
                 if r.status_code == 200:
                     print(f"Modele utilise: {m}")
                     return r.json()["candidates"][0]["content"]["parts"][0]["text"]
-                print(f"{m}: HTTP {r.status_code} - {r.text[:150]}")
+                print(f"{m}: HTTP {r.status_code}")
             except Exception as e:
                 print(f"{m}: erreur {e}")
-        if tentative < 2:
-            print("Surcharge Google, nouvel essai dans 45s...")
-            time.sleep(45)
-    return None
+        return None
+
+    for tentative in range(4):
+        res = essayer(bons)
+        if res:
+            return res
+        print(f"Surcharge Google (essai {tentative + 1}/4), attente 60s...")
+        time.sleep(60)
+
+    print("Repli sur les modeles alleges")
+    return essayer(secours)
 
 def nettoyer(txt):
     t = txt.strip()
