@@ -310,7 +310,14 @@ def monitor():
     journal = load_journal()
     jour = datetime.now().strftime("%Y-%m-%d")
     journal.setdefault(jour, [])
+
+    mode = os.getenv("SCAN_MODE", "complet")
+    institutions = ("CMF", "BVMT", "BCT", "INS")
+    print(f"Mode de balayage: {mode}")
+
     for site, url in SITES.items():
+        if mode == "institutions" and not site.startswith(institutions):
+            continue
         key = site + "|urls"
         print(f"-> {site}")
         if "news.google.com" in url:
@@ -324,37 +331,26 @@ def monitor():
         known = set(state.get(key, []))
 
         if not known:
-            # Premiere fois pour ce site : on memorise sans notifier
             print(f"   Baseline: {len(articles)} articles memorises")
         else:
             new = {h: t for h, t in articles.items() if h not in known}
             if "Tunisie" in site:
                 new = {h: t for h, t in new.items() if "tunis" in t.lower()}
-        
-
-            
             uniques = {}
             for h, t in new.items():
-                if _norm(t)[:60] not in [_norm(v)[:60] for v in uniques.values()]:
+                if t not in uniques.values():
                     uniques[h] = t
             new = uniques
             new = {h: t for h, t in new.items() if not any(x in t for x in EXCLUS)}
-                        for h_, t_ in new.items():
-                journal[jour].append({"site": site, "titre": t_, "lien": h_})
-            for href, title in list(new.items()):
-                motif = motif_rejet(site, title, href)
-                if motif:
-                    print(f"   [FILTRE {motif}] {title[:80]}")
-                    if FILTRAGE_ACTIF:
-                        del new[href]
             print(f"   {len(new)} nouveau(x) article(s)")
+            for h_, t_ in new.items():
+                journal[jour].append({"site": site, "titre": t_, "lien": h_})
             for i, (href, title) in enumerate(new.items()):
                 if i >= MAX_NOTIF_PER_SITE:
                     notify(site, f"+ {len(new) - MAX_NOTIF_PER_SITE} autres nouveaux articles", url)
                     break
                 notify(site, title, href)
 
-        # Memorise (garde les 300 derniers liens connus)
         state[key] = list(dict.fromkeys(list(articles.keys()) + list(known)))[:300]
 
     save_state(state)
