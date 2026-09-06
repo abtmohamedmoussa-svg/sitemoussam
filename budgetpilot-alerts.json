@@ -1,4 +1,12 @@
 {
-  "syncedAt": "2026-09-06T01:01:40.830Z",
-  "alerts": []
+  "syncedAt": "2026-09-06T21:34:32.013Z",
+  "alerts": [
+    {
+      "id": "unclassified_transaction:global",
+      "type": "unclassified_transaction",
+      "severity": "warning",
+      "title": "Transactions à catégoriser",
+      "message": "261 transactions attendent une catégorie — direction \"À catégoriser\"."
+    }
+  ]
 }
