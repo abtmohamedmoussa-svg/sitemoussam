@@ -115,6 +115,37 @@ def page(titre, corps):
 <div class="nav"><a href="index.html">Toutes les syntheses</a></div>
 </body></html>"""
 
+def html_vers_texte(h):
+    t = re.sub(r"<(strong|b)>", "<b>", h, flags=re.I)
+    t = re.sub(r"</(strong|b)>", "</b>", t, flags=re.I)
+    t = re.sub(r"<h[1-6][^>]*>(.*?)</h[1-6]>", r"\n\n<b>\1</b>", t, flags=re.S | re.I)
+    t = re.sub(r"<li[^>]*>(.*?)</li>", r"\n- \1", t, flags=re.S | re.I)
+    t = re.sub(r"</?(p|ul|ol|div|span|em|i|br|hr)[^>]*>", "\n", t, flags=re.I)
+    t = re.sub(r"\n{3,}", "\n\n", t)
+    return t.strip()
+
+def telegram(message, parse="HTML"):
+    token = os.getenv("TELEGRAM_TOKEN1")
+    chat = os.getenv("TELEGRAM_CHAT_ID")
+    if not token or not chat:
+        print("Telegram non configure")
+        return
+    payload = {"chat_id": chat, "text": message, "disable_web_page_preview": True}
+    if parse:
+        payload["parse_mode"] = parse
+    try:
+        r = requests.post(f"https://api.telegram.org/bot{token}/sendMessage",
+                          json=payload, timeout=30)
+        if r.status_code == 200:
+            print("Telegram: envoye")
+            return
+        print(f"Telegram: HTTP {r.status_code} - {r.text[:200]}")
+    except Exception as e:
+        print(f"Telegram: erreur {e}")
+    if parse:
+        print("Telegram: nouvel essai en texte brut")
+        telegram(re.sub(r"<[^>]+>", "", message), parse=None)
+
 def main():
     with open(JOURNAL_FILE, "r", encoding="utf-8") as f:
         journal = json.load(f)
@@ -163,6 +194,9 @@ def main():
         timeout=10
     )
     print(f"Publie: {lien_jour}")
-
+    entete = (f"<b>Veille du {datetime.now().strftime('%d/%m/%Y')}</b> - "
+              f"{len(articles)} articles\n{lien_jour}\n")
+    telegram((entete + "\n" + html_vers_texte(corps))[:3900])
+  
 if __name__ == "__main__":
     main()
