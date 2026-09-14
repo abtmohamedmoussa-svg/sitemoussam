@@ -125,7 +125,7 @@ def html_vers_texte(h):
     return t.strip()
 
 def telegram(message, parse="HTML"):
-    token = os.getenv("TELEGRAM_TOKEN1")
+    token = os.getenv("TELEGRAM_TOKEN2")
     chat = os.getenv("TELEGRAM_CHAT_ID")
     if not token or not chat:
         print("Telegram non configure")
