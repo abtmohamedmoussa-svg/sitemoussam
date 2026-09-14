@@ -20,8 +20,10 @@ jobs:
     - name: Generer la synthese
       env:
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-      run: python digest.py
-
+        TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN1 }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      run: python digest.py    
+        
     - name: Publier sur le repo public
       env:
         PAGES_TOKEN: ${{ secrets.PAGES_TOKEN }}
