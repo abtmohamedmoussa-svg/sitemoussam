@@ -40969,6 +40969,631 @@
    "site": "CMF Avis",
    "titre": "Mises en Garde",
    "lien": "https://www.cmf.tn/mises-en-garde"
+  },
+  {
+   "site": "CMF",
+   "titre": "SAM-EFI30/06-2026",
+   "lien": "https://www.cmf.tn/?q=sam-efi3006-2026"
+  },
+  {
+   "site": "CMF",
+   "titre": "CIMENTS DE BIZERTE-EFI30/06-2026",
+   "lien": "https://www.cmf.tn/?q=ciments-de-bizerte-efi3006-2026"
+  },
+  {
+   "site": "CMF",
+   "titre": "SIAME-EFI30/06-2026",
+   "lien": "https://www.cmf.tn/?q=siame-efi3006-2026"
+  },
+  {
+   "site": "BVMT",
+   "titre": "05/10/2026ATELIER MEUBLE INTERIEURS - Etats Financiers Semestriels Individuels du 30/06/2026",
+   "lien": "https://tunis-stockexchange.com/node/91741"
+  },
+  {
+   "site": "BVMT",
+   "titre": "05/10/2026SPDIT - SICAF - Informations Post Assemblée Générale Ordinaire du 30/09/2026",
+   "lien": "https://tunis-stockexchange.com/node/91711"
+  },
+  {
+   "site": "BVMT",
+   "titre": "05/10/2026SIAME - Etats Financiers Semestriels Individuels du 30/06/2026",
+   "lien": "https://tunis-stockexchange.com/node/91737"
+  },
+  {
+   "site": "WMC",
+   "titre": "Prix alimentaires:  le grand écart derrière l’inflation tunisienne",
+   "lien": "https://www.webmanagercenter.com/2026/10/05/574010/prix-alimentaires-le-grand-ecart-derriere-linflation-tunisienne/"
+  },
+  {
+   "site": "WMC",
+   "titre": "Nobel de médecine 2026:  comment une algue a donné aux scientifiques un interrupteur pour le cerveau",
+   "lien": "https://www.webmanagercenter.com/2026/10/05/574009/nobel-de-medecine-2026-comment-une-algue-a-donne-aux-scientifiques-un-interrupteur-pour-le-cerveau/"
+  },
+  {
+   "site": "WMC",
+   "titre": "Économie mondiale:   L’Asie ralentit, l’Afrique accélère-t-elle vraiment ?",
+   "lien": "https://www.webmanagercenter.com/2026/10/05/574008/economie-mondiale-lasie-ralentit-lafrique-accelere-t-elle-vraiment/"
+  },
+  {
+   "site": "WMC",
+   "titre": "Sénégal énergie:  2 300 MW installés, mais les délestages révèlent le vrai défi électrique",
+   "lien": "https://www.webmanagercenter.com/2026/10/05/574007/senegal-energie-2-300-mw-installes-mais-les-delestages-revelent-le-vrai-defi-electrique/"
+  },
+  {
+   "site": "WMC",
+   "titre": "France – Lycées en crise:  quand la contrainte de dette rattrape le budget de l’éducation",
+   "lien": "https://www.webmanagercenter.com/2026/10/05/574001/france-lycees-en-crise-quand-la-contrainte-de-dette-rattrape-le-budget-de-leducation/"
+  },
+  {
+   "site": "WMC",
+   "titre": "MAURITANIE –  Enseignement supérieur:  deux fois plus d’étudiants, le défi de la qualité",
+   "lien": "https://www.webmanagercenter.com/2026/10/05/574000/mauritanie-enseignement-superieur-deux-fois-plus-detudiants-le-defi-de-la-qualite/"
+  },
+  {
+   "site": "WMC",
+   "titre": "Distance aux services publics en Tunisie:  vers un nouvel indicateur territorial",
+   "lien": "https://www.webmanagercenter.com/2026/10/05/573997/distance-aux-services-publics-en-tunisie-vers-un-nouvel-indicateur-territorial/"
+  },
+  {
+   "site": "WMC",
+   "titre": "Comment transformer un produit artisanal tunisien en marque exportable ?",
+   "lien": "https://www.webmanagercenter.com/2026/10/05/573994/comment-transformer-un-produit-artisanal-tunisien-en-marque-exportable/"
+  },
+  {
+   "site": "WMC",
+   "titre": "Change devises en dinar tunisien:  Cours du 05 Octobre 2026",
+   "lien": "https://www.webmanagercenter.com/2026/10/05/573996/change-devises-en-dinar-tunisien-cours-du-05-octobre-2026/"
+  },
+  {
+   "site": "WMC",
+   "titre": "500 000 patients étrangers en Tunisie:  ce que dit réellement ce chiffre",
+   "lien": "https://www.webmanagercenter.com/2026/10/05/573995/500-000-patients-etrangers-en-tunisie-ce-que-dit-reellement-ce-chiffre/"
+  },
+  {
+   "site": "WMC",
+   "titre": "Loi de finances 2027:  la Tunisie aura-t-elle plus de marge de manœuvre ?",
+   "lien": "https://www.webmanagercenter.com/2026/10/05/573948/loi-de-finances-2027-la-tunisie-aura-t-elle-plus-de-marge-de-manoeuvre/"
+  },
+  {
+   "site": "WMC",
+   "titre": "DGI:  les questions fiscales explosent de 25 % en Tunisie en 2026",
+   "lien": "https://www.webmanagercenter.com/2026/10/05/573947/dgi-les-questions-fiscales-explosent-de-25-en-tunisie-en-2026/"
+  },
+  {
+   "site": "WMC",
+   "titre": "Alerte Agriculture – Prix alimentaires:  céréales et sucre en première ligne face au nouveau choc mondial",
+   "lien": "https://www.webmanagercenter.com/2026/10/05/574004/alerte-agriculture-prix-alimentaires-cereales-et-sucre-en-premiere-ligne-face-au-nouveau-choc-mondial/"
+  },
+  {
+   "site": "WMC",
+   "titre": "ONUDI-Tunisie:  quelles priorités pour moderniser l’industrie d’ici 2030 ?",
+   "lien": "https://www.webmanagercenter.com/2026/10/05/573945/onudi-tunisie-quelles-priorites-pour-moderniser-lindustrie-dici-2030/"
+  },
+  {
+   "site": "Economiste Maghrebin",
+   "titre": "BH Bank : Un 2ᵉ rapport de durabilité marqué par un premier bilan carbone historique",
+   "lien": "https://www.leconomistemaghrebin.com/2026/10/05/bh-bank-bilan-carbone-historique/"
+  },
+  {
+   "site": "Economiste Maghrebin",
+   "titre": "Cameroun : une étude alerte sur la présence de métaux lourds dans la filière avicole",
+   "lien": "https://www.leconomistemaghrebin.com/2026/10/05/cameroun-une-etude-alerte-sur-la-presence-de-metaux-lourds-dans-la-filiere-avicole/"
+  },
+  {
+   "site": "Economiste Maghrebin",
+   "titre": "Octobre Rose : Ooredoo Tunisie transforme chaque pas en un geste solidaire avec Go Run",
+   "lien": "https://www.leconomistemaghrebin.com/2026/10/05/octobre-rose-ooredoo-tunisie-transforme-chaque-pas-en-un-geste-solidaire-avec-go-run/"
+  },
+  {
+   "site": "Economiste Maghrebin",
+   "titre": "Alexander Kremer nommé nouveau directeur pays du Groupe de la Banque mondiale en Tunisie",
+   "lien": "https://www.leconomistemaghrebin.com/2026/10/05/alexander-kremer-nomme-nouveau-directeur-pays-du-groupe-de-la-banque-mondiale-en-tunisie/"
+  },
+  {
+   "site": "Economiste Maghrebin",
+   "titre": "Pologne : Leszek Miller demande des comptes sur les armes et les fonds fournis à l’Ukraine",
+   "lien": "https://www.leconomistemaghrebin.com/2026/10/05/pologne-leszek-miller-demande-des-comptes-sur-les-armes-et-les-fonds-fournis-a-lukraine/"
+  },
+  {
+   "site": "Economiste Maghrebin",
+   "titre": "Le couple alimentation – enseignement alimente la hausse des prix",
+   "lien": "https://www.leconomistemaghrebin.com/2026/10/05/le-couple-alimentation-enseignement-alimente-la-hausse-des-prix/"
+  },
+  {
+   "site": "Economiste Maghrebin",
+   "titre": "Inflation : la hausse des prix s’accélère à 5,6 % en septembre",
+   "lien": "https://www.leconomistemaghrebin.com/2026/10/05/inflation-hausse-prix-saccelere-56-septembre/"
+  },
+  {
+   "site": "Economiste Maghrebin",
+   "titre": "Djerba, 7 octobre : les Américains appelés à la plus grande vigilance",
+   "lien": "https://www.leconomistemaghrebin.com/2026/10/05/djerba-7-octobre-les-americains-appeles-a-la-plus-grande-vigilance/"
+  },
+  {
+   "site": "Economiste Maghrebin",
+   "titre": "Jemna : la jeunesse au cœur des initiatives locales",
+   "lien": "https://www.leconomistemaghrebin.com/2026/10/04/jemna-la-jeunesse-au-coeur-des-initiatives-locales/"
+  },
+  {
+   "site": "Business News",
+   "titre": "Giorgia Meloni dépose sa voix pour se protéger des deepfakes",
+   "lien": "https://businessnews.com.tn/2026/10/05/giorgia-meloni-depose-sa-voix-pour-se-proteger-des-deepfakes/1421484/"
+  },
+  {
+   "site": "Business News",
+   "titre": "Abdelhamid Jelassi entame une grève de la faim et refuse le suivi médical",
+   "lien": "https://businessnews.com.tn/2026/10/05/abdelhamid-jelassi-entame-une-greve-de-la-faim-et-refuse-le-suivi-medical/1421473/"
+  },
+  {
+   "site": "Business News",
+   "titre": "L’inflation grimpe à 5,6% : volailles, fruits, viandes et légumes tirent les prix vers le haut",
+   "lien": "https://businessnews.com.tn/2026/10/05/linflation-grimpe-a-56-volailles-fruits-viandes-et-legumes-tirent-les-prix-vers-le-haut/1421469/"
+  },
+  {
+   "site": "Business News",
+   "titre": "Des patrouilles en civil pour traquer les infractions routières",
+   "lien": "https://businessnews.com.tn/2026/10/05/des-patrouilles-en-civil-pour-traquer-les-infractions-routieres/1421445/"
+  },
+  {
+   "site": "Tunisie Numérique",
+   "titre": "34A la uneOctobre Rose : Ooredoo Tunisie transforme chaque pas en un geste solidaire avec Go RunIl y a 39 minutes",
+   "lien": "https://www.tunisienumerique.com/octobre-rose-ooredoo-tunisie-transforme-chaque-pas-en-un-geste-solidaire-avec-go-run/"
+  },
+  {
+   "site": "Tunisie Numérique",
+   "titre": "60SociétéTunisie : jusqu’à 26 ans de prison pour des membres d’un réseau de falsification de...Il y a 1 heure",
+   "lien": "https://www.tunisienumerique.com/tunisie-jusqua-26-ans-de-prison-pour-des-membres-dun-reseau-de-falsification-de-documents-immobiliers/"
+  },
+  {
+   "site": "Tunisie Numérique",
+   "titre": "67A la uneLe Groupe de la Banque mondiale nomme le Britannique Alexander Kremer nouveau Représentant pour la TunisieIl y a 1 heure",
+   "lien": "https://www.tunisienumerique.com/le-groupe-de-la-banque-mondiale-nomme-le-britannique-alexander-kremer-nouveau-representant-pour-la-tunisie/"
+  },
+  {
+   "site": "Tunisie Numérique",
+   "titre": "93EconomieTunisie – Transmettre son entreprise : donation, succession ou cessionIl y a 2 heures",
+   "lien": "https://www.tunisienumerique.com/tunisie-transmettre-son-entreprise-donation-succession-ou-cession/"
+  },
+  {
+   "site": "Tunisie Numérique",
+   "titre": "123EconomieTunisie : quelles priorités pour le budget de l’État en 2027 ?Il y a 3 heures",
+   "lien": "https://www.tunisienumerique.com/tunisie-quelles-priorites-pour-le-budget-de-letat-en-2027/"
+  },
+  {
+   "site": "Tunisie Numérique",
+   "titre": "14ActualitésTennis : le Tunisien Aziz Dougaz accède au deuxième tour des qualifications du Masters de...Il y a 3 minutes",
+   "lien": "https://www.tunisienumerique.com/tennis-le-tunisien-aziz-dougaz-accede-au-deuxieme-tour-des-qualifications-du-masters-de-shanghai/"
+  },
+  {
+   "site": "Tunisie Numérique",
+   "titre": "120SportQualifications CAN U20 : la règle bizarre de l’IFAB qui a sauvé la Tunisie contre la Libye !",
+   "lien": "https://www.tunisienumerique.com/qualifications-can-u20-la-regle-bizarre-de-lifab-qui-a-sauve-la-tunisie-contre-la-libye/"
+  },
+  {
+   "site": "Kapitalis",
+   "titre": "L’artisanat tunisien mise sur le design et l’innovation pour mieux s’exporter",
+   "lien": "https://kapitalis.com/tunisie/2026/10/05/lartisanat-tunisien-mise-sur-le-design-et-linnovation-pour-mieux-sexporter/"
+  },
+  {
+   "site": "Kapitalis",
+   "titre": "Concert à Tunis du guitariste espagnol Dani de Morón",
+   "lien": "https://kapitalis.com/tunisie/2026/10/05/concert-a-tunis-du-guitariste-espagnol-dani-de-moron/"
+  },
+  {
+   "site": "Tustex",
+   "titre": "SIAME : Le bénéfice du premier semestre...",
+   "lien": "https://www.tustex.com/bourse-bilans/siame-siame-le-benefice-du-premier-semestre-progresse-de-10"
+  },
+  {
+   "site": "Tustex",
+   "titre": "SCB subit une perte de 22 MD au premier...",
+   "lien": "https://www.tustex.com/bourse-bilans/scb-scb-subit-une-perte-de-22-md-au-premier-semestre"
+  },
+  {
+   "site": "Tustex",
+   "titre": "Le CMF participe à la Semaine Mondiale d...",
+   "lien": "https://www.tustex.com/bourse-divers/le-cmf-participe-a-la-semaine-mondiale-de-l-investisseur-et-publie-un-guide-pour-la-prevention-des"
+  },
+  {
+   "site": "Tustex",
+   "titre": "Banques cotées: croissance, rentabilité...",
+   "lien": "https://www.tustex.com/bourse-opinion/banques-cotees-croissance-rentabilite-et-risque-redessinent-les-positions-au-s1-2026-par-prime"
+  },
+  {
+   "site": "Tustex",
+   "titre": "INS : L'inflation atteint 5,6% en s...",
+   "lien": "https://www.tustex.com/economie-actualites-economiques/ins-l-inflation-atteint-56-en-septembre"
+  },
+  {
+   "site": "Tustex",
+   "titre": "La BAD lance une initiative pour amélior...",
+   "lien": "https://www.tustex.com/international/la-bad-lance-une-initiative-pour-ameliorer-la-notation-des-pays-africains"
+  },
+  {
+   "site": "Magazine Entreprise",
+   "titre": "L’Algérie et la Tunisie s’accordent sur la construction d’une centrale électrique de 1400 MW",
+   "lien": "https://www.entreprises-magazine.com/lalgerie-et-la-tunisie-saccordent-sur-la-construction-dune-centrale-electrique-de-1400-mw/"
+  },
+  {
+   "site": "Magazine Entreprise",
+   "titre": "Tunisie : Le taux d’inflation atteint 5,6%",
+   "lien": "https://www.entreprises-magazine.com/tunisie-le-taux-dinflation-atteint-56/"
+  },
+  {
+   "site": "Magazine Entreprise",
+   "titre": "La CCIS et l’Institut Français de Tunisie s’associent pour former les salariés des entreprises locales",
+   "lien": "https://www.entreprises-magazine.com/la-ccis-et-linstitut-francais-de-tunisie-sassocient-pour-former-les-salaries-des-entreprises-locales/"
+  },
+  {
+   "site": "Magazine Entreprise",
+   "titre": "À l’ère de l’intelligence artificielle, le rôle de l’enseignant n’a jamais été aussi déterminant",
+   "lien": "https://www.entreprises-magazine.com/a-lere-de-lintelligence-artificielle-le-role-de-lenseignant-na-jamais-ete-aussi-determinant/"
+  },
+  {
+   "site": "Lapresse",
+   "titre": "Phénomènes célestes : l’Association Tunisienne des Sciences Astronomiques appelle à...",
+   "lien": "https://www.lapresse.tn/2026/10/05/phenomenes-celestes-lassociation-tunisienne-des-sciences-astronomiques-appelle-a-mettre-en-place-un-systeme-de-surveillance-du-ciel/"
+  },
+  {
+   "site": "Lapresse",
+   "titre": "Jendouba-Postes vacants, dégradation de l’infrastructure scolaire….: Des enseignants du secondaire...",
+   "lien": "https://www.lapresse.tn/2026/10/05/jendouba-postes-vacants-degradation-de-linfrastructure-scolaire-des-enseignants-du-secondaire-reclament-des-solutions/"
+  },
+  {
+   "site": "Lapresse",
+   "titre": "Qui est Alexander Kremer, le nouveau représentant du Groupe de...",
+   "lien": "https://www.lapresse.tn/2026/10/05/qui-est-alexander-kremer-le-nouveau-representant-du-groupe-de-la-banque-mondiale-en-tunisie/"
+  },
+  {
+   "site": "Lapresse",
+   "titre": "Octobre Rose : Ooredoo Tunisie transforme chaque pas en un...",
+   "lien": "https://www.lapresse.tn/2026/10/05/octobre-rose-ooredoo-tunisie-transforme-chaque-pas-en-un-geste-solidaire-avec-go-run/"
+  },
+  {
+   "site": "Lapresse",
+   "titre": "Projet de budget de l’État 2027: Robinets économiseurs d’eau et...",
+   "lien": "https://www.lapresse.tn/2026/10/05/projet-de-budget-de-letat-2027-robinets-economiseurs-deau-et-dispositifs-de-collecte-des-eaux-pluviales-dans-les-ministeres/"
+  },
+  {
+   "site": "Lapresse",
+   "titre": "ISIE : révision des règles encadrant les prochaines échéances électorales",
+   "lien": "https://www.lapresse.tn/2026/10/05/isie-revision-des-regles-encadrant-les-prochaines-echeances-electorales/"
+  },
+  {
+   "site": "Lapresse",
+   "titre": "La 12ᵉ édition du Forum International des DSI se tiendra...",
+   "lien": "https://www.lapresse.tn/2026/10/05/la-12%e1%b5%89-edition-du-forum-international-des-dsi-se-tiendra-du-5-au-7-novembre-2026-a-hammamet/"
+  },
+  {
+   "site": "Lapresse",
+   "titre": "Inflation : le taux atteint 5,6% en septembre 2026, l’alimentation...",
+   "lien": "https://www.lapresse.tn/2026/10/05/inflation-le-taux-atteint-56-en-septembre-2026-lalimentation-toujours-sous-pression/"
+  },
+  {
+   "site": "Lapresse",
+   "titre": "Tunisie, Algérie, Maroc… 12 pays arabes concernés par un risque...",
+   "lien": "https://www.lapresse.tn/2026/10/05/tunisie-algerie-maroc-12-pays-arabes-concernes-par-un-risque-de-pluies-orageuses/"
+  },
+  {
+   "site": "Lapresse",
+   "titre": "“Boule de feu” observée dans le ciel : ces fragments...",
+   "lien": "https://www.lapresse.tn/2026/10/05/boule-de-feu-observee-dans-le-ciel-ces-fragments-qui-peuvent-valoir-plus-que-lor-mais/"
+  },
+  {
+   "site": "Managers",
+   "titre": "Octobre Rose: Ooredoo Tunisie transforme chaque pas en un geste solidaire avec Go Run",
+   "lien": "https://managers.tn/2026/10/05/octobre-rose-ooredoo-tunisie-transforme-chaque-pas-en-un-geste-solidaire-avec-go-run/"
+  },
+  {
+   "site": "Managers",
+   "titre": "Le CMF publie un nouveau guide pour éviter les pièges de l’investissement en ligne",
+   "lien": "https://managers.tn/2026/10/05/cmf-publie-un-nouveau-guide-pour-eviter-les-pieges-de-linvestissement-en-ligne/"
+  },
+  {
+   "site": "Managers",
+   "titre": "Le Groupe de la Banque mondiale nomme Alexander Kremer représentant pour la Tunisie",
+   "lien": "https://managers.tn/2026/10/05/le-groupe-de-la-banque-mondiale-nomme-un-nouveau-representant-pour-la-tunisie/"
+  },
+  {
+   "site": "Managers",
+   "titre": "Orange Tunisie et Focus s’associent pour accélérer l’accès des entreprises au Cloud souverain en Tunisie",
+   "lien": "https://managers.tn/2026/10/05/orange-tunisie-et-focus-sassocient-pour-accelerer-lacces-des-entreprises-au-cloud-souverain-en-tunisie/"
+  },
+  {
+   "site": "Managers",
+   "titre": "Capacités productives: 99e mondiale, la Tunisie devance le Maroc et l’Algérie, mais…",
+   "lien": "https://managers.tn/2026/10/05/capacites-productives-99e-mondiale-la-tunisie-devance-le-maroc-et-lalgerie-mais/"
+  },
+  {
+   "site": "Managers",
+   "titre": "BH Bank: publication de son deuxième rapport de durabilité",
+   "lien": "https://managers.tn/2026/10/05/bh-bank-publication-de-son-deuxieme-rapport-de-durabilite/"
+  },
+  {
+   "site": "TAP",
+   "titre": "ISIE : révision du cadre réglementaire en prévision des prochaines échéances électorales",
+   "lien": "https://www.tap.info.tn/fr/Portail-Politique/20655792-isie-révision-du"
+  },
+  {
+   "site": "TAP",
+   "titre": "Bourse de Tunis: Le Tunindex clôture lundi sur une note légèrement baissière(-0,09%)",
+   "lien": "https://www.tap.info.tn/fr/Portail-Economie/20656555-bourse-de-tunis-le"
+  },
+  {
+   "site": "TAP",
+   "titre": "Finances: Le CMF participe, du 5 au 11 octobre 2026, à la semaine mondiale de...",
+   "lien": "https://www.tap.info.tn/fr/Portail-Economie/20656515-finances-le-cmf"
+  },
+  {
+   "site": "TAP",
+   "titre": "Forum méditerranéen du commerce international: Le commerce intrarégional en Méditerranée...",
+   "lien": "https://www.tap.info.tn/fr/Portail-Economie/20656276-forum-méditerranéen"
+  },
+  {
+   "site": "TAP",
+   "titre": "Projet de budget de l’État 2027: Généralisation des équipements économes en eau et des...",
+   "lien": "https://www.tap.info.tn/fr/Portail-Economie/20656408-projet-de-budget-de"
+  },
+  {
+   "site": "TAP",
+   "titre": "L’Institut Hédi Raïs et Qatar Charity signent une convention pour réaliser 100 opérations de la cataracte",
+   "lien": "https://www.tap.info.tn/fr/Portail-Société/20656103-l-institut-hédi"
+  },
+  {
+   "site": "TAP",
+   "titre": "Le ministre de l’éducation appelle à la nécessité de placer la prévention des phénomènes...",
+   "lien": "https://www.tap.info.tn/fr/Portail-Société/20655767-le-ministre-de"
+  },
+  {
+   "site": "TAP",
+   "titre": "Japan Festival 2026  : les traditions japonaises à l'honneur à la Cité de la culture fin octobre",
+   "lien": "https://www.tap.info.tn/fr/Portail-Culture-et-Médias/20656252-japan-festival-2026"
+  },
+  {
+   "site": "TAP",
+   "titre": "Tennis-Tournoi ATP 500 de Pékin : Djokovic qualifié en finale, après la disqualification de Medvedev",
+   "lien": "https://www.tap.info.tn/fr/Portail-Sports-FR/20656500-tennis-tournoi-atp"
+  },
+  {
+   "site": "TAP",
+   "titre": "Tennis-Masters de Shanghai : Aziz Dougaz qualifié pour le dernier tour des qualifications",
+   "lien": "https://www.tap.info.tn/fr/Portail-Sports-FR/20656459-tennis-masters-de"
+  },
+  {
+   "site": "TAP",
+   "titre": "Foot: Van Dijk, 11e joueur à atteindre 100 sélections avec les Pays-Bas",
+   "lien": "https://www.tap.info.tn/fr/Portail-Sports-FR/20656286-foot-van-dijk-11e"
+  },
+  {
+   "site": "TAP",
+   "titre": "Tennis-ATP 500 de Pékin: De Minaur en finale après l'abandon de Hurkacz",
+   "lien": "https://www.tap.info.tn/fr/Portail-Sports-FR/20656146-tennis-atp-500-de"
+  },
+  {
+   "site": "TAP",
+   "titre": "Jendouba : Les enseignants du secondaire réclament le comblement des postes vacants et la réhabilitation des établissements",
+   "lien": "https://www.tap.info.tn/fr/Portail-Régions/20656374-jendouba-les"
+  },
+  {
+   "site": "TAP",
+   "titre": "Jendouba: Appel à accélérer la réalisation des projets d’approvisionnement en eau potable",
+   "lien": "https://www.tap.info.tn/fr/Portail-Régions/20652444-jendouba-appel-à"
+  },
+  {
+   "site": "TAP",
+   "titre": "Ben Arous : Plus de 16 mille ha consacrés aux grandes cultures",
+   "lien": "https://www.tap.info.tn/fr/Portail-Régions/20652406-ben-arous-plus-de"
+  },
+  {
+   "site": "TAP",
+   "titre": "Projet de budget de l’État 2027 : Poursuite de l’amélioration de la croissance économique...",
+   "lien": "https://www.tap.info.tn/fr/Portail_Veille-et-Suivi/20656381-projet-de-budget-de"
+  },
+  {
+   "site": "TAP",
+   "titre": "Agression sioniste contre Ghaza: un Palestinien tombe en martyr à Khan Younes",
+   "lien": "https://www.tap.info.tn/fr/Portail-Monde/20656399-agression-sioniste"
+  },
+  {
+   "site": "TAP",
+   "titre": "Nigeria : crash d'un avion de l'armée de l'air avec 32 personnes à bord",
+   "lien": "https://www.tap.info.tn/fr/Portail-Monde/20656380-nigeria-crash"
+  },
+  {
+   "site": "TAP",
+   "titre": "Afrique du Sud : plus de 220 entreprises liquidées en août",
+   "lien": "https://www.tap.info.tn/fr/Portail-Monde/20656242-afrique-du-sud"
+  },
+  {
+   "site": "TAP",
+   "titre": "Éthiopie: Ahmed Shide élu président de la Chambre des représentants du peuple",
+   "lien": "https://www.tap.info.tn/fr/Portail-Monde/20656199-éthiopie-ahmed"
+  },
+  {
+   "site": "TAP",
+   "titre": "Tennis-Tournoi ATP 500 de Pékin : Djokovic qualifié en finale, après la disqualification...",
+   "lien": "https://www.tap.info.tn/fr/Portail-Titres-de-l-actualité/20656500-tennis-tournoi-atp"
+  },
+  {
+   "site": "ilboursa",
+   "titre": "L’Algérie construira une centrale électrique de 1.400 MW en Tunisie - Ilboursa.com",
+   "lien": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNRGJZYlY0b0U2bjVVQWpTYWl6ckdES0NHV3ZLZ0FkLU5tLXhSUUdlODRYeGI2LWVzeXV5cHUtNmRJSDcxRFNoMW1IaEUwRGlfcmlNQzFmeVpNbEtlZHFYTzNSUHVIUjRlV2Zyc2NwVWRJTW5WOUhQbEVfelA0a1NxNDZoMkVGNE13Z1dyc3FkMnE1dzFlSFJPQ0xsaFRSZkVVV0xWRGI1dw?oc=5"
+  },
+  {
+   "site": "ilboursa",
+   "titre": "La SFBT clôture sa campagne PFE 2026 : 100 étudiants accompagnés au cœur de l'entreprise - Ilboursa.com",
+   "lien": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPbHpUSjVNYXJwdHp5b05yVTk3WnZhcHJXa1J6dXk1dUZfYnl5WjU2MU94RUlfNVB2WGFrbDRnak1UR0R2TmhxcW91Ty1ZRnYzZ0x4ZTFJZ0pPT01qS3JpR1FCR0RCX0RPeDBjNlRqMzJtSVVxVlRuc0l0eThCTklvcnJVN0FqLTN0UzFEaUR2WHdncUFkZm5RRzRqRHE0Z3JLT29VM3l1LWtuUnpZblRaM25FWXdpdHc4aXJ5czBrNlNSQ2Y0TnNHU0N3?oc=5"
+  },
+  {
+   "site": "ilboursa",
+   "titre": "Alexander Kremer, nouveau Représentant du Groupe de la Banque mondiale pour la Tunisie - Ilboursa.com",
+   "lien": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNMlljc1FnSHJHQkIzVUZQSS1idUlOU01aUS1ZUVV5Vl9zUWFCUDBoMGg5MHlUaFp2aUlORzNNRFU1eExFTE1wMVdDbDg0Z1lfenp2aTR3anplaXF6SVRvRHZFUTA2U0NBVjJ4UlVKZEs2bjV4RGprdjdjNWhiMW00UmVuQWpOWGtqUFFLVk5wbnBCTFFFTnUzeUZxNFFOcEw3alJPektTT1BVZWszRGE2NnJXcGM5TFVyU3BfQkdGOVZTZw?oc=5"
+  },
+  {
+   "site": "ilboursa",
+   "titre": "Les recettes touristiques dépassent 6,3 milliards de dinars à fin septembre 2026 - Ilboursa.com",
+   "lien": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQcWlmdWc1d3lGTlR0VlpfX2NCOE40Ul9oV1VWdlN4X1ROVUlwcndnSEJXNDZmbFhlWGY0MTJTNmhGYUVndTVkcFliZy1FU0RGRElPMWFlV3NNbkhCR2xZc0s3VDN3TGVmX0lsNmVuSmxSU0Y1TDk1UmJDSGlBWnBZTXNqTFRBTVkxVklJNUFLYnVCMDFfNmtBYXVRM0t4eXZCNFMwRWVlcmwyMXhLV29ILVlsaktsX25HRE84?oc=5"
+  },
+  {
+   "site": "ilboursa",
+   "titre": "Tunis, Sfax et Sousse figurent dans le Global Cities Index 2026 - Ilboursa.com",
+   "lien": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNeV9SUHlfVUhIQkFwNHJmNTRYaGdCOXpZamprMGlVQUh3bFo3a1J6UVZkMGstaEdwaDhFRm1sUl9CbktxVnpuNTBJMWFRNEZ0cC0tRW5CZ3BiYWxsQWNfWUVNejNqZGVEaTRDNzJoR1MzVVhuSWhXWkdrUU92c2ZtZkR2Q0liTzlwOGR3T3NYaGY0US11cHhaWVpuVHN6LURaTGw4?oc=5"
+  },
+  {
+   "site": "ilboursa",
+   "titre": "Banques cotées : Ce que le PNB et le Résultat Net ne disent pas - Ilboursa.com",
+   "lien": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPbVQ1cm10Ung3TVpqM3ZFQ21pVm5kby1GU3h1ekY1akRETF96bUt0OUhfUXM1bUZfTzROM2NpWXNvTEdNRGRUTXRNbEJtS0hwVzFRSFZPWGYzX3lQcjN5cDY2bENUZHFQTTktc2JwcnIxNGYxR05JZ3RScklTR19taWxvRFNWdnZpaU5peU9RbEpkd2lwRUpnRG45TzE2WllMdXc?oc=5"
+  },
+  {
+   "site": "ilboursa",
+   "titre": "La BH Bank publie son deuxième Rapport de Durabilité - Ilboursa.com",
+   "lien": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPejlHY1dJQ2dvb3kxYnhIVWVCQWgtMHdZMDFLOS1YaUV5VFRiYXF2S3J3dUhwS3laclcxdlVRb2lLUHdVTGVmNzV0VkVaOHpvVk5HVExMT3IwNXZTN3gtdEpOVjkyZ2dHZ2VsR2h3c3BtSFNOaVRKaHdLRkplX1hqRlBKWUNhaVF0Z1FRaWRHWEtTbnpmUXc?oc=5"
+  },
+  {
+   "site": "Agence Ecofin Tunisie",
+   "titre": "La Tunisie obtient 376 millions $ de la BID pour accélérer le désenclavement de ses régions intérieures - AGENCE ECOFIN",
+   "lien": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxOeEVMaktwLXdQWGV1V3IzLU4wQm1IYXRUSlUyLWhwOVMzb0lCVkxDdFpESTFXbXVWdmZqWGtjam1hVFVfTWNldmFORkpKcG5ldGZubjdzOG42aGZTSmdIbTNFMTFmdURCYzY5UVZuMUJYbGVnOTJLU2VwMU9JQnNLODdqN1NvNUh0Wjc5bFhmOS0tU2RwTnVsMDN0WmhXSkZBVmE4Wlk4eGZNNFdhU3NlQndWU29kX01nTlRlRVQ0NmxkTTNYMnVnTXNJVlVBV2t0YVo0bWNLaS1ucklMMk5BUG0xZXB3cG5OLU9BZmZMbXlINTlOa3Jjam1fV21Tdw?oc=5"
+  },
+  {
+   "site": "Agence Ecofin Tunisie",
+   "titre": "Orange Tunisie et Focus s’allient pour accélérer l’accès des entreprises au Cloud souverain en Tunisie - AGENCE ECOFIN",
+   "lien": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxQeUdUTnk0N2ZrNE10WkZpbVRYR2FKaHVYSmNrZ3Fac2QtQXVQOW9EOGF5bkFhN2Y4OF81Y0hOQkE4YUpXRGM2d3RJc0Y1QWtDR25Hb19XdE5xdkFReldVcnJtUXcta25HbkprYnRtaC1sMzU2S3JXM2ZfbkZPVjBRMGlyVnhJVVpGdW1CM242dUlkZ1hpWm9iYURRSllCalg2eXc5b3NLd0JUdks1dDE5MDhpLWVOZEdCM0hLbEdxSlIySHZNZTlTUVFNVW9qdXpvZEhTUzJTQUN0RVptcUxVbWZaUzhxRlVlWFlaOTNMcm9CNmNuUnd3?oc=5"
+  },
+  {
+   "site": "sikafinances",
+   "titre": "UEMOA : Dès le 2 novembre, les transferts de monnaie électronique interopérables - Sika Finance",
+   "lien": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxPc29aU29YYktTZWUxYllqQ2lFaURXX09QX2g4ZG1aLWlrXzdqNVF3OGw3V1FOckQ5VmphVHJCTUVLUUdQVmdTekxhRHkxc3VucC1CYXdVTE1IbXk1LUVCYXF4NVFQN2dBZ0RuQWJRdWdxbHVfbUVEeUU5ajgtYWNtMjlieWlicFNjMVFERmM1U0tsV2lxQjZ0OTIwMUtnMDRCZzNNaGl4dmhYSmQySU1YMlVEb3pUX0l0RHk3S2twU0I4MkFQSC04ZUxINkxGNTNzSmkzRzU0TTJuX2UyNlZPWWxLdnY2WEV0RG1rcHFWV0I?oc=5"
+  },
+  {
+   "site": "sikafinances",
+   "titre": "BRVM / SEMAINE 39 : La BRVM retrouve de l’élan, Bridge Bank et SODECI se distinguent - Sika Finance",
+   "lien": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNUnF3VWtCWnktNDVGejFiSHFSY1l3eGtUNmU5MzRUNHp6eGlJb1hEN3NBSFFDbV9mNnJJVDZWU3RBeVdBQVZkbmRVbkdYbzkwbVdCcE1VRzBCWjFaOFktUUlLVW9yQXJHYllZTW50dHNhVXk5TFlySWRUaXAwUHpvdWM4UC1ub3BIbjJINFltVzhSTEQ0Y2NYYnVwTVZNcnJGNlkxZTBsdElGaC1oeVFyT2hwRDhmbk1QOTFtNQ?oc=5"
+  },
+  {
+   "site": "BVMT Publications",
+   "titre": "05/10/2026IndividuelsSociétés CotéesATELIER MEUBLE INTERIEURS - Etats Financiers Semestriels Individuels du 30/06/2026Etats Financiers Semestriels Individuels au titre de 30/06/2026.Télécharger",
+   "lien": "https://tunis-stockexchange.com/node/91741"
+  },
+  {
+   "site": "BVMT Publications",
+   "titre": "05/10/2026OrdinaireSociétés CotéesSPDIT - SICAF - Informations Post Assemblée Générale Ordinaire du 30/09/2026Informations Post Assemblée Générale Ordinaire en date du 30/09/2026.Télécharger",
+   "lien": "https://tunis-stockexchange.com/node/91711"
+  },
+  {
+   "site": "BVMT Publications",
+   "titre": "05/10/2026IndividuelsSociétés CotéesSIAME - Etats Financiers Semestriels Individuels du 30/06/2026Etats Financiers Semestriels Individuels au titre de 30/06/2026.Télécharger",
+   "lien": "https://tunis-stockexchange.com/node/91737"
+  },
+  {
+   "site": "BVMT Publications",
+   "titre": "05/10/2026SemestrielsSociétés CotéesCIMENTS DE BIZERTE - Etats Financiers Semestriels du 30/06/2026Etats Financiers Semestriels Individuels au titre de 30/06/2026.Télécharger",
+   "lien": "https://tunis-stockexchange.com/node/91736"
+  },
+  {
+   "site": "CMF Communiques societes",
+   "titre": "SAM-EFI30/06-2026",
+   "lien": "https://www.cmf.tn/?q=sam-efi3006-2026"
+  },
+  {
+   "site": "CMF Communiques societes",
+   "titre": "CIMENTS DE BIZERTE-EFI30/06-2026",
+   "lien": "https://www.cmf.tn/?q=ciments-de-bizerte-efi3006-2026"
+  },
+  {
+   "site": "CMF Communiques societes",
+   "titre": "SIAME-EFI30/06-2026",
+   "lien": "https://www.cmf.tn/?q=siame-efi3006-2026"
+  },
+  {
+   "site": "CMF Etats financiers",
+   "titre": "SAM-EFI30/06-2026",
+   "lien": "https://www.cmf.tn/?q=sam-efi3006-2026"
+  },
+  {
+   "site": "CMF Etats financiers",
+   "titre": "CIMENTS DE BIZERTE-EFI30/06-2026",
+   "lien": "https://www.cmf.tn/?q=ciments-de-bizerte-efi3006-2026"
+  },
+  {
+   "site": "CMF Etats financiers",
+   "titre": "SIAME-EFI30/06-2026",
+   "lien": "https://www.cmf.tn/?q=siame-efi3006-2026"
+  },
+  {
+   "site": "CMF Etats financiers",
+   "titre": "siame efi 30.06.2026",
+   "lien": "https://www.cmf.tn/sites/default/files/pdfs/emetteurs/informations/consultations/siame_efi_30.06.2026.pdf"
+  },
+  {
+   "site": "CMF Etats financiers",
+   "titre": "les ciments de bizerte efi 30.06.2026",
+   "lien": "https://www.cmf.tn/sites/default/files/pdfs/emetteurs/informations/consultations/les_ciments_de_bizerte_efi_30.06.2026.pdf"
+  },
+  {
+   "site": "CMF Etats financiers",
+   "titre": "sam efi 30.06.2026",
+   "lien": "https://www.cmf.tn/sites/default/files/pdfs/emetteurs/informations/consultations/sam_efi_30.06.2026.pdf"
+  },
+  {
+   "site": "CMF Indicateurs activite",
+   "titre": "SAM-EFI30/06-2026",
+   "lien": "https://www.cmf.tn/?q=sam-efi3006-2026"
+  },
+  {
+   "site": "CMF Indicateurs activite",
+   "titre": "CIMENTS DE BIZERTE-EFI30/06-2026",
+   "lien": "https://www.cmf.tn/?q=ciments-de-bizerte-efi3006-2026"
+  },
+  {
+   "site": "CMF Indicateurs activite",
+   "titre": "SIAME-EFI30/06-2026",
+   "lien": "https://www.cmf.tn/?q=siame-efi3006-2026"
+  },
+  {
+   "site": "CMF Visas titres creance",
+   "titre": "SAM-EFI30/06-2026",
+   "lien": "https://www.cmf.tn/?q=sam-efi3006-2026"
+  },
+  {
+   "site": "CMF Visas titres creance",
+   "titre": "CIMENTS DE BIZERTE-EFI30/06-2026",
+   "lien": "https://www.cmf.tn/?q=ciments-de-bizerte-efi3006-2026"
+  },
+  {
+   "site": "CMF Visas titres creance",
+   "titre": "SIAME-EFI30/06-2026",
+   "lien": "https://www.cmf.tn/?q=siame-efi3006-2026"
+  },
+  {
+   "site": "CMF Visas capital",
+   "titre": "SAM-EFI30/06-2026",
+   "lien": "https://www.cmf.tn/?q=sam-efi3006-2026"
+  },
+  {
+   "site": "CMF Visas capital",
+   "titre": "CIMENTS DE BIZERTE-EFI30/06-2026",
+   "lien": "https://www.cmf.tn/?q=ciments-de-bizerte-efi3006-2026"
+  },
+  {
+   "site": "CMF Visas capital",
+   "titre": "SIAME-EFI30/06-2026",
+   "lien": "https://www.cmf.tn/?q=siame-efi3006-2026"
+  },
+  {
+   "site": "CMF Avis",
+   "titre": "SAM-EFI30/06-2026",
+   "lien": "https://www.cmf.tn/?q=sam-efi3006-2026"
+  },
+  {
+   "site": "CMF Avis",
+   "titre": "CIMENTS DE BIZERTE-EFI30/06-2026",
+   "lien": "https://www.cmf.tn/?q=ciments-de-bizerte-efi3006-2026"
+  },
+  {
+   "site": "CMF Avis",
+   "titre": "SIAME-EFI30/06-2026",
+   "lien": "https://www.cmf.tn/?q=siame-efi3006-2026"
   }
  ]
 }
